@@ -1,7 +1,7 @@
 \name{print.summary.pairwiseCI}
 \alias{print.summary.pairwiseCI}
 
-\title{ Print function for summary.pairwiseCI }
+\title{ Print function for "summary.pairwiseCI" }
 \description{
  Print function for summary.pairwiseCI 
 }
@@ -15,4 +15,4 @@
 
 \author{ Frank Schaarschmidt }
 
-\keyword{htest }
+\keyword{print}

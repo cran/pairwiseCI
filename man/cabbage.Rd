@@ -1,7 +1,7 @@
 \name{cabbage}
 \alias{cabbage}
 \docType{data}
-\title{Yield of cabbage under four different fertilizer treatments}
+\title{Yield of cabbage in one-factorial field trial}
 \description{
   
 }

@@ -1,7 +1,7 @@
 \name{print.pairwiseCI}
 \alias{print.pairwiseCI}
 
-\title{ Print function for class "pairwiseCI" }
+\title{ Print function for "pairwiseCI" }
 \description{
 Print out confidence intervals calculated using pairwiseCI.
 }
@@ -19,5 +19,5 @@ Print out confidence intervals calculated using pairwiseCI.
 \author{ Frank Schaarschmidt }
 
 }
-\keyword{ htest }
+\keyword{ print }
 

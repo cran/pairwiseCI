@@ -9,10 +9,10 @@ function(x, y, conf.level=0.95, alternative="two.sided")
 
    nx<-sum(colsx)
    ny<-sum(colsy)
-   XI<-colsx[1]+1
-   YI<-colsy[1]+1
-   nxI<-nx+2
-   nyI<-ny+2
+   XI<-colsx[1]+0.5
+   YI<-colsy[1]+0.5
+   nxI<-nx+0.5
+   nyI<-ny+0.5
    estimate <- (colsx[1]/nx)/(colsy[1]/ny)
   }
   else
@@ -21,10 +21,10 @@ function(x, y, conf.level=0.95, alternative="two.sided")
      {
       nx<-sum(x)
       ny<-sum(y)
-      XI<-x[1]+1
-      YI<-y[1]+1
-      nxI<-nx+2
-      nyI<-ny+2
+      XI<-x[1]+0.5
+      YI<-y[1]+0.5
+      nxI<-nx+0.5
+      nyI<-ny+0.5
       estimate <- (x[1]/nx)/(y[1]/ny)
      }
    else{stop("Prop.or needs two data.frames or two numeric vectors of length 2 as input")}

@@ -1,6 +1,6 @@
 "summary.pairwiseTest"<-
 
-function( object, digits=4, p.adjust.method="none", letters=FALSE, ... )
+function( object, digits=4, p.adjust.method="none", ... )
 {
 
 args<-list(...)
@@ -9,7 +9,6 @@ args<-list(...)
  bynames <- object$bynames
  method <- object$method
  by <- object$by
-
 
 
 if(is.null(by))
@@ -31,23 +30,9 @@ if(is.null(by))
 
  names(out)<-c("p.val.adj", "p.val.raw", "comparison",
  "groupx", "groupy")
-
-if(letters & is.null(object$control))
- {
-  nslargs <- list()
-  if(!is.null(args$alpha))
-   {nslargs$alpha <- args$alpha}
-  nslargs$factor1 <- out$groupx
-  nslargs$factor2 <- out$groupy
-  nslargs$pvalue <- out$p.val.adj
-  letters <- do.call("nonsigletters", nslargs)
-  print(letters)
-
- }
-
- }
+}
 else
- {
+{
 # with by-factor(i.e. byout has length>1)
 
  byv <- factor()
@@ -74,12 +59,15 @@ byvarout<-paste(by, collapse=".")
 
 names(out)<-c("p.val.adj", "p.val.raw", "comparison",
  "groupx", "groupy", byvarout)
- }
+}
 
 attr(x=out, which="testmethod")<-object$method
 attr(x=out, which="p.adjust.method")<-p.adjust.method
-attr(x=out, which="digits")<-digits
-class(out)<-"summary.pairwiseTest"
+
+out[,"p.val.adj"]<-round(out[,"p.val.adj"], digits=digits)
+out[,"p.val.raw"]<-round(out[,"p.val.raw"], digits=digits)
+
+class(out)<-c("summary.pairwiseTest", "data.frame")
 
 return(out)
 }
@@ -92,13 +80,8 @@ function(x, ...)
 {
 cat("P-values calculated using", attr(x,"testmethod"),",\n")
 cat("Adjustment for multiplicity:", attr(x,"p.adjust.method")  , "\n")
-digits<-attr(x, "digits")
 cat("\n")
 class(x)<-"data.frame"
-
-x[,"p.val.adj"]<-round(x[,"p.val.adj"], digits=digits)
-x[,"p.val.raw"]<-round(x[,"p.val.raw"], digits=digits)
-
 print(x, ...)
 invisible(x)
 }

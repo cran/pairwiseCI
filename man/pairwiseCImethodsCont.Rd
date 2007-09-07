@@ -16,10 +16,12 @@
 \alias{HD.diff}
 \alias{HD.ratio}
 
-\title{ Confidence interval methods for continuous data in pairwiseCI }
+\title{ Confidence interval methods implemented for continuous data in pairwiseCI }
+
 \description{
 Confidence interval methods available for pairwiseCI for comparison of two independent samples. Methods for continuous variables.
 }
+
 \usage{
 
 Param.diff(x, y, conf.level=0.95, alternative="two.sided", ...)
@@ -52,13 +54,14 @@ HD.ratio(x, y, conf.level=0.95, alternative="two.sided", ...)
 \item \code{Param.diff} calculates the confidence interval for the difference
  in means of two Gaussian samples by calling \code{t.test} in package \pkg{stats},
  assuming homogeneous variances if \code{var.equal=TRUE},
- but heterogeneous variances if \code{var.equal=FALSE} (default);
+ and heterogeneous variances if \code{var.equal=FALSE} (default);
 
 
 \item \code{Param.ratio} calculates the Fiellers confidence interval for the ratio
  of two Gaussian samples by calling \code{ratio.t.test} in package \pkg{mratios},
  assuming homogeneous variances if \code{var.equal=TRUE},
- but heterogeneous variances if \code{var.equal=FALSE} (default);
+ and heterogeneous variances if \code{var.equal=FALSE} (default);
+
 
 \item \code{Lognorm.diff} calculates the confidence interval for the difference
  in means of two Lognormal samples, currently, further arguments \code{(\dots)}
@@ -126,7 +129,7 @@ Journal of the Royal Statistical Society, Series B, 16, 175-185.
  See also:
  \bold{Hasler, M,  Vonk, R, Hothorn, LA}: Assessing non-inferiority of a new treatment in a three arm trial in the presence of heteroscedasticity (submitted). 
 
- \item \code{Lognorm.ratio} and \code{Lognorm.ratio}: \bold{Chen, Y-H, Zhou, X-H (2006)}:Interval estimates for the ratio and the difference of two lognormal means.
+ \item \code{Lognorm.ratio} and \code{Lognorm.ratio}: Implements the simple large sample solutions presented and compared with improved methods in: \bold{Chen, Y-H, Zhou, X-H (2006)}: Interval estimates for the ratio and the difference of two lognormal means.
 Statistics in Medicine 25, 4099-4113.
 
 

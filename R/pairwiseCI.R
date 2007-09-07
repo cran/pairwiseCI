@@ -5,7 +5,7 @@ alternative="two.sided", conf.level=0.95,
 
 {
 
-method<-match.arg(method, choices=c("Param.diff", "Param.ratio", "Lognorm.diff", "Lognorm.ratio","HL.diff", "HL.ratio", "HD.diff", "HD.ratio", "Median.diff" ,"Median.ratio", "Prop.diff", "Prop.ratio", "Prop.or"))
+method<-match.arg(method, choices=c("Param.diff", "Param.ratio", "Lognorm.diff", "Lognorm.ratio","HL.diff", "HL.ratio", "HD.diff", "HD.ratio", "Median.diff" ,"Median.ratio", "Prop.diff", "Prop.diffAdd2", "Prop.ratio", "Prop.or"))
 
 alternative<-match.arg(alternative, choices=c("two.sided", "less", "greater"))
 
@@ -36,7 +36,7 @@ args$conf.level <- conf.level
 args$method <- method
 args$control <- control
 
-if(any(c("Prop.diff", "Prop.or", "Prop.ratio")==method))
+if(any(c("Prop.diff","Prop.diffAdd2", "Prop.or", "Prop.ratio")==method))
  {PWCINT<-"pairwiseCIProp"}
  else
  {PWCINT<-"pairwiseCICont"}

@@ -40,13 +40,16 @@ pargs$digits<-digits
    {methodI <- "Ratio of Medians: Percentile bootstrap"}
 
   if(method=="Prop.diff")
-   {methodI <- "Score: difference of proportions"}
+   {methodI <- "Difference of proportions, Continuity corrected"}
+
+  if(method=="Prop.diffAdd2")
+   {methodI <- "Difference of proportions, Agresti-Caffo"}
 
   if(method=="Prop.ratio")
-   {methodI <- "Add4: ratio of proportions"}
+   {methodI <- "Ratio of proportions"}
 
   if(method=="Prop.or")
-   {methodI <- "Adjusted Woolf: odds ratio"}
+   {methodI <- "Odds ratio"}
 
   cat(" ","\n")
   cat(x$conf.level*100, " %-confidence intervals", "\n")

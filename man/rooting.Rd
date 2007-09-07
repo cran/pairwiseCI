@@ -3,9 +3,10 @@
 \docType{data}
 \title{Rooting of plants}
 \description{
- Part of an experiment on long cuttings of Acer pseudoplatanus and Pyrus spec..
+ Part of an experiment on propagation of plant genera Acer and Pyrus.
  Cuttings were taken from motherplants of age 5 and age 20, from top or base,
- and were treated with 0, 0.5 and 2 percent IBA. Treatments were arranged in a completely randomized design,
+ and were treated with 0, 0.5 and 2 percent IBA to induce rooting.
+ Treatments were arranged in a completely randomized design,
  among other variables, the number of cuttings with and without roots was recorded.
 }
 \usage{data(rooting)}
@@ -23,7 +24,10 @@
 \details{
 }
 \source{
-  Part of a Msc thesis by Dawit Mamushet Yifru, Institute of Floriculture, Tree Nursery Science and PLant Breeding, University of Hannover, 2005. 
+  Data taken from Msc thesis by Dawit Mamushet Yifru,
+  Institute of Floriculture,
+  Tree Nursery Science and Plant Breeding,
+  University of Hannover, 2005. 
 }
 \examples{
 data(rooting)
@@ -31,8 +35,11 @@ data(rooting)
 rooting$IBAf<-as.factor(rooting$IBA)
 rooting$Rep<-as.factor(rooting$Rep)
 
-fitB<-glm(cbind(root,noroot)~Rep+(Age + Position + IBA)^2, data=rooting, family=binomial)
-fitQB<-glm(cbind(root,noroot)~Rep+(Age + Position + IBA)^2, data=rooting, family=quasibinomial)
+fitB<-glm(cbind(root,noroot)~Rep+(Age + Position + IBA)^2,
+ data=rooting, family=binomial)
+
+fitQB<-glm(cbind(root,noroot)~Rep+(Age + Position + IBA)^2,
+ data=rooting, family=quasibinomial)
 
 summary(fitB)
 summary(fitQB)

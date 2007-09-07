@@ -1,9 +1,9 @@
 \name{Prop.test}
 \alias{Prop.test}
 
-\title{ Calculate p-values of the Chi-square test for 2x2 tables as prop.test(stats)}
+\title{ Wrapper to prop.test(stats)}
 \description{
-  Only for internal use in \code{pairwiseTest}.
+  Only for internal use in pairwiseTest.
 }
 \usage{
 Prop.test(x, y, alternative = "two.sided", ...)
@@ -17,8 +17,8 @@ Prop.test(x, y, alternative = "two.sided", ...)
   \item{\dots}{ arguments to be passed to \code{prop.test(stats)} }
 }
 \details{
-This function calls \code{prop.test(stats)}. 
-If x,y are data.frames containing two columns taken to be counts of successes and counts of failures, columnwise sums of x,y are calculated.
+Just a wrapper function to call \code{prop.test(stats)}. 
+If x, y are data.frames containing two columns taken to be counts of successes and counts of failures, columnwise sums of x,y are calculated.
 The total number of successes and the total number of trials is then passed to prop.test.
 }
 \value{
@@ -26,8 +26,7 @@ The total number of successes and the total number of trials is then passed to p
 }
 
 \author{ Frank Schaarschmidt }
-\note{ Testversion.
-}
+
 \seealso{\code{\prop.test}, and \code{pairwise.prop.test} in \code{stats}}
 \examples{
 

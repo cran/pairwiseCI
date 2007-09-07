@@ -46,7 +46,9 @@ a data.frame containing the columns
 
 \author{ Frank Schaarschmidt }
 
-\seealso{ \code{\link{pairwiseTest}},  \code{\link{pairwise.t.test}}, \code{\link{pairwise.prop.test}}, \code{\link{p.adjust}}   }
+\seealso{ \code{\link{pairwiseTest}} for a user level function, 
+and 
+ \code{\link{pairwise.t.test}}, \code{\link{pairwise.prop.test}}, \code{\link{p.adjust}} for further functions to calculate multiplicity adjusted p-values.  }
 }
 \keyword{ htest }
 

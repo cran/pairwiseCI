@@ -16,13 +16,7 @@ Assumed to be a completely randomized design.
     \item{\code{treatment}}{a factor with levels \code{A} \code{B} \code{C} \code{D} \code{E} \code{F} \code{G} \code{H}, the concentration of sulphur}
   }
 }
-\details{
-  }
-\source{
-  ...
-}
-\references{
- }
+
 \examples{
 data(repellent)
 boxplot(decrease ~ treatment, data=repellent)

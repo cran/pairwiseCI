@@ -1,6 +1,6 @@
 \name{print.pairwiseTest}
 \alias{print.pairwiseTest}
-\title{ Print function for objects of class "pairwiseTest" }
+\title{ Print function for "pairwiseTest" }
 \description{
 Print function for pairwiseTest objects
  }
@@ -14,5 +14,5 @@ Print function for pairwiseTest objects
 }
 
 \author{ Frank Schaarschmidt }
-\keyword{htest}
+\keyword{print}
 

@@ -3,7 +3,8 @@
 \docType{data}
 \title{ Measurements of behenic acid}
 \description{
-  Observations below a detection limit: in field trials with transgeneic and isogenic corn varieties the behenic acid content
+  Observations below a detection limit: in field trials with transgenic and isogenic corn
+ varieties the behenic acid content was measured. Objective is to prove equivalence.
 }
 \usage{data(behenic)}
 \format{
@@ -13,9 +14,7 @@
     \item{\code{Behenic}}{a numeric vector giving concentration of behenic acid, where 0.002 is the detection limit}
   }
 }
-\details{
 
-}
 \source{
   Oberdoerfer, R.B. Example dataset from composition analyses of genetically modified oilseed rape seeds. 2003; BCS GmbH.
 }

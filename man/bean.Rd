@@ -1,7 +1,7 @@
 \name{bean}
 \alias{bean}
 \docType{data}
-\title{Yield of beans in a design with one block and two treatment factors}
+\title{Yield of beans in a two factorial field trial}
 \description{
   Block design with four blocks. Within the blocks a 2x3 factorial design was randomized: Two types of 
 horse beans (Vicia faba) were grown under three fertilization levels of phosphor.
@@ -17,9 +17,7 @@ horse beans (Vicia faba) were grown under three fertilization levels of phosphor
     \item{\code{yield}}{a numeric vector, giving the mean yields of beans in kg/ha}
   }
 }
-\details{
-  
-}
+
 \source{
 Petersen, RG: Design and Analysis of experiments. Marcel Dekker, Inc.
 }

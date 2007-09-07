@@ -2,7 +2,7 @@
 
 \alias{summary.pairwiseCI}
 
-\title{ Summary function for pairwiseCI objects }
+\title{ Summary function for pairwiseCI}
 \description{ Creates a list of data.frames from the output of pairwiseCI}
 \usage{
 \method{summary}{pairwiseCI}(object, digits = 4, ...)
@@ -36,4 +36,4 @@ srootRR<-summary(rootRR)
 srootRR$'20'$conf.int$upper
 
 }
-\keyword{ htest }
+\keyword{ print }

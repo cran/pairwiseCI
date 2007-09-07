@@ -33,8 +33,8 @@ pairwiseCIProp(formula, data, alternative="two.sided",
   \item{conf.level}{ The comparisonwise confidence level of the intervals, where 0.95 is default }
 
   \item{method}{ A character string specifying the confidence interval method
-    \item{"Param.diff"}{ Difference of two means, with additional argument \code{var.equal} as in \code{t.test}}
-    \item{"Param.ratio"}{ Ratio of two means, with additional argument \code{var.equal} as in \code{ratio.t.test}}
+    \item{"Param.diff"}{ Difference of two means, with additional argument \code{var.equal=FALSE}(default) as in \code{t.test(stats)}}
+    \item{"Param.ratio"}{ Ratio of two means, with additional argument \code{var.equal=FALSE}(default) as in \code{t.test.ratio(mratios)}}
     \item "Lognorm.diff": Difference of two means, assuming a lognormal distribution,
     \item "Lognorm.ratio": Ratio of two means, assuming a lognormal distribution,
     \item{"HL.diff"}{Exact nonparametric CI for difference of locations based on the Hodges-Lehmann estimator,}
@@ -43,7 +43,7 @@ pairwiseCIProp(formula, data, alternative="two.sided",
     \item{"HD.ratio"}{Nonparametric CI for ratio of locations, based on the Harrell-Davis estimator (percentile bootstrap CI),}
     \item{"Median.diff"}{Nonparametric CI for difference of locations, based on the medians (percentile bootstrap CI),}
     \item{"Median.ratio"}{Nonparametric CI for ratio of locations, based on the medians (percentile bootstrap CI),}
-    \item{"Prop.diff"}{Asymptotic CI for difference of proportions \code{prop.test}}
+    \item{"Prop.diff"}{Asymptotic CI for difference of proportions \code{prop.test(stats)}}
     \item{"Prop.ratio"}{ Asymptotic CI for ratio of proportions}
     \item{"Prop.or"}{ Asymptotic CI for the odds ratio}
   See \code{?pairwiseCImethods} for details.
@@ -70,7 +70,11 @@ pairwiseCIProp(formula, data, alternative="two.sided",
 
 
 
-\seealso{ \code{\link{pairwiseCI}}, \code{t.test(stats)},  \code{wilcox.exact(exactRankTests)}, \code{prop.test(stats)} for the CI methods,
+\seealso{ \code{\link{pairwiseCI}} for the user level function;
+\code{\link{pairwiseCImethodsCont}}, and \code{\link{pairwiseCImethodsProp}} for a more detailed documentation of the implemented methods;
+\code{\link{summary.pairwiseCI}} for a summary function.
+
+ \code{t.test(stats)},  \code{wilcox.exact(exactRankTests)}, \code{prop.test(stats)} for the Sources of some of the CI methods,
 \pkg{multcomp} for simultaneous intervals for difference for various contrasts,
 \pkg{mratios} for simultaneous intervals for the ratio in many-to-one comparisons}
 }

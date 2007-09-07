@@ -1,9 +1,9 @@
 \name{sodium}
 \alias{sodium}
 \docType{data}
-\title{Sodium measurements in transgenic and isogenic corn ???} 
+\title{Sodium contents in transgenic and isogenic corn} 
 \description{
-  
+ Sodium was measured in transgenic corn and the original isogenic corn variety.
 }
 \usage{data(sodium)}
 \format{
@@ -16,7 +16,7 @@
 \details{
 }
 \source{
-  ???? Oberdoerfer, R.B. Example dataset from composition analyses of genetically modified oilseed rape seeds. 2003; BCS GmbH.
+ Oberdoerfer, R.B. Example dataset from composition analyses of genetically modified oilseed rape seeds. 2003; BCS GmbH.
 }
 
 }

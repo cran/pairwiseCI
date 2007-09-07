@@ -3,16 +3,19 @@
 \alias{pairwiseCImethodsProp}
 
 \alias{Prop.diff}
+\alias{Prop.diffAdd2}
 \alias{Prop.ratio}
 \alias{Prop.or}
 
-\title{ Different confidence interval methods available for pairwiseCI for comparison of two independent samples}
+\title{ Confidence interval methods implemented for proportions in pairwiseCI}
 \description{
-Methods for binomial variables.
+For the comparison of two independent samples of binomial observations, confidence intervals for
+the difference (RD), ratio (RR) and odds ratio (OR) of proportions are implemented.
 }
 \usage{
 
 Prop.diff(x, y, conf.level=0.95, alternative="two.sided", ...)
+Prop.diffAdd2(x, y, conf.level = 0.95, alternative = "two.sided", ...)
 Prop.ratio(x, y, conf.level=0.95, alternative="two.sided")
 Prop.or(x, y, conf.level=0.95, alternative="two.sided")
 
@@ -28,15 +31,16 @@ Prop.or(x, y, conf.level=0.95, alternative="two.sided")
 
 \details{
 \itemize{
-\item \code{Prop.diff} calculates the confidence interval for the difference
+\item \code{Prop.diff} calculates the asymptotic Continuity Corrected confidence interval for the difference
  of proportions by calling \code{prop.test} in package \pkg{stats}, where the input are two
  vectors x and y giving the number of successes and failures in the two samples; 
 
+\item \code{Prop.diffAdd2} Uses the package binMto to calculate the confidence interval
+ proposed by Agresti and Caffo (2000).
 
-\item \code{Prop.ratio} calculates the confidence interval for the ratio
- of proportions according to Dann and Koch (2005);
+\item \code{Prop.ratio} calculates the crude interval for the ratio of proportions 
+ according to Gart and Nam (1988), based on normal approximation on the log-scale.
  
-
 \item \code{Prop.or} calculates the adjusted Woolf confidence interval for
  the odds ratio of proportions according to Lawson (2005). 
 }
@@ -53,9 +57,17 @@ A list containing:
 
 \references{ 
 \itemize{
-\item \code{Prop.diff} uses \code{prop.test} in \pkg{stats}.
+\item \code{Prop.diff} uses \code{prop.test} in \pkg{stats}. This is currently the continuity corrected interval CC,
+as described in \bold{Newcombe R.G. (1998):} Interval Estimation for the Difference Between Independent Proportions: Comparison of Eleven Methods. Statistics in Medicine 17, 873-890. 
+
+\item \code{Prop.diffAdd2}: Calls the Agresti-Caffo-Interval as implemented in the package binMto.
+The method is described in: \bold{Agresti, A. and Caffo, B. (2000):} Simple and effective confidence intervals for proportions and differences of proportions result from adding two successes and two failures. 
+American Statistician 54 (4), 280-288.
 
 \item \code{Prop.ratio}
+\bold{Gart, JJ and Nam, J (1988)}: Approximate interval estimation of the ratio of binomial parameters: A review and corrections for skewness.
+ Biometrics 44, 323-338.
+Additional simulation results are given in: 
 \bold{Dann, RS and Koch, GG (2005)}: Review and evaluation of methods for computing confidence intervals for the ratio of two proportions and considerations for non-inferiority clinical trials.
  Journal of Biopharmaceutical Statistics, 15, 85-107.
 

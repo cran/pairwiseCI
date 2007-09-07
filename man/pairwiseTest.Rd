@@ -5,10 +5,12 @@
 \description{ Calculation of raw p-values for pairwise comparisons of several groups.
  The data can be split by additional factors. Any test function can be used,
  that takes two samples x,y as input and returns a list containing the p.value in an element named \code{$p.value}.
- The output of this function might be further processed using \link{p.adjust} in order to adjust for multiple comparisons.
+ The output of this function might be further processed using \code{\link{p.adjust}} in order to adjust for multiple comparisons.
   }
 \usage{
-pairwiseTest(formula, data, by = NULL, alternative = "two.sided", method = "t.test", control = NULL, ...)
+pairwiseTest(formula, data, by = NULL,
+ alternative = "two.sided", method = "t.test",
+ control = NULL, ...)
 
 }
 \arguments{
@@ -26,11 +28,15 @@ pairwiseTest(formula, data, by = NULL, alternative = "two.sided", method = "t.te
   \item{\dots}{ Arguments to be passed the function defined in \code{method}  }
 }
 \details{
-Testversion.
 This function splits the response variable according to the factor(s) specified in \code{by}, and within each subset
 according to the grouping variable specified in \code{formula}. The function specified in \code{method} is called
 to calculate a p.value for all pairwise comparisons of between the subsets, within each level of \code{by}.
+The p-values are NOT adjusted for multiple hypothesis testing.
 
+For binomial proportions, only \code{"Prop.test"} can be specified in the argument \code{method};
+For continous variables, any function can be specified, which takes \code{x} and \code{y} as first arguments,
+and returns a list containing a list containing the appropriate p-value in the element named \code{p.value}
+ (as do the functions of class \code{"htest"}). See the examples for details. 
 }
 \value{
   A named list with elements
@@ -45,10 +51,12 @@ to calculate a p.value for all pairwise comparisons of between the subsets, with
 }
 
 \author{ Frank Schaarschmidt }
-\note{ 
 
-}
-\seealso{  \code{\link{pairwise.t.test}}, \code{\link{pairwise.prop.test}}, \code{\link{p.adjust}},
+\seealso{ 
+You can use \code{\link{summary.pairwiseTest}} to calculate multiplicity adjusted p-values from the output of pairwiseTest.
+
+The following methods provide multiplicity adjusted p-values for various situations:
+  \code{\link{pairwise.t.test}}, \code{\link{pairwise.prop.test}}, \code{\link{p.adjust}},
 \code{summary.glht(multcomp)}, \code{simtest.ratio(mratios)}   }
 
 \examples{
@@ -63,7 +71,7 @@ to calculate a p.value for all pairwise comparisons of between the subsets, with
 
 data(rooting)
 
-# Risk difference
+# Pairwise Chi-square tests:
 
 aproots<-pairwiseTest(cbind(root, noroot) ~ IBA,
  data=rooting, by=c("Age", "Position"), method="Prop.test")
@@ -117,7 +125,8 @@ boxplot(resp~fact)
 
 # All pairwise comparisons using Welch-tests
 
-aptestW<-pairwiseTest(resp~fact, data=data, method="t.test", var.equal=FALSE)
+aptestW<-pairwiseTest(resp~fact, data=data, method="t.test",
+ var.equal=FALSE)
 aptestW
 summary(aptestW, p.adjust.method="holm", letters=TRUE)
 
@@ -127,7 +136,8 @@ aptestWi<-pairwiseTest(resp~fact, data=data, method="wilcox.test")
 aptestWi
 summary(aptestWi, p.adjust.method="holm", letters=TRUE)
 
-# All pairwise comparisons using Permutation tests
+# All pairwise comparisons using Permutation tests 
+# from library exactRankTests
 
 aptestP<-pairwiseTest(resp~fact, data=data, method="perm.test")
 aptestP
@@ -173,8 +183,6 @@ CIcompP<-pairwiseCI(yield~P, data=bean, by="T",
  alternative="greater", conf.level=1-0.05/4)
 
 plot(CIcompP)
-
-
 
   }
 }

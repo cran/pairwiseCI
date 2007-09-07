@@ -1,7 +1,7 @@
 \name{plot.pairwiseCI}
 \alias{plot.pairwiseCI}
 
-\title{ Plot the an object of class "pairwiseCI" as resulting from the function pairwiseCI  }
+\title{ Plot function for teh output of pairwiseCI }
 
 \description{
 Easy method for plotting estimates and confidence bounds calculated using pairwiseCI.
@@ -16,7 +16,7 @@ Easy method for plotting estimates and confidence bounds calculated using pairwi
 }
 
 \arguments{
-  \item{x}{ an object of class "pairwiseCI", the output of function pairwiseCI() }
+  \item{x}{ an object of class "pairwiseCI", the output of function \code{\link{pairwiseCI}} }
   \item{CIvert}{ logical, whether confidence intervals shall be plotted vertical if CIvert=TRUE and horizontal if CIvert=FALSE }
   \item{CIlty}{ integer, giving the line type of the CI, as appropriate in ?par(lty)  }
   \item{CIlwd}{ integer, giving the line width of the CI, as appropriate in ? par(lwd) }
@@ -31,18 +31,15 @@ Easy method for plotting estimates and confidence bounds calculated using pairwi
  one must currently adjust \code{par(cex.axis)}, and some arguments as \code{las}, \code{at}, \code{labels} are defined internally. }
 
 }
-\details{
-  
-}
 
 \author{ Frank Schaarschmidt }
 
-\seealso{ \code{plotCI(gplots)}, \code{lotmeans(gplots)}, \code{plot.hmtest(multcomp)} }
 \examples{
 
 data(Oats)
 
-output <- pairwiseCI(yield ~ Block, data=Oats, by="nitro",method="Param.diff", control="I")
+output <- pairwiseCI(yield ~ Block, data=Oats,
+ by="nitro",method="Param.diff", control="I")
 
 # default plot for difference methods:
 plot(output)
@@ -50,14 +47,17 @@ plot(output)
 # some small changes:
 plot(output, CIvert=TRUE, H0line=c(-2,0,2), H0lty=c(2,1,2))
 
-output <- pairwiseCI(yield ~ Block, data=Oats, by="nitro", method="Param.ratio", control="I")
+output <- pairwiseCI(yield ~ Block, data=Oats,
+ by="nitro", method="Param.ratio", control="I")
+
 # default plot for ratio methods:
 plot(output)
 
 # some small changes:
-plot(output, CIvert=FALSE, H0line=c(0.7, 1, 1/0.7), H0lty=c(3,2,3))
-
+plot(output, CIvert=FALSE, H0line=c(0.7, 1, 1/0.7),
+ H0lty=c(3,2,3))
 
 }
-\keyword{ htest }
+\keyword{hplot}
+\concept{confidence}
 
