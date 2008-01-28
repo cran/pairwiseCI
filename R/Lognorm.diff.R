@@ -1,68 +1,61 @@
 
-
-"Lognorm.diff" <- function(x, y, conf.level=0.95, alternative="two.sided", ...)
+Lognorm.diff<-function(x,y, conf.level=0.95, alternative="two.sided", sim=10000,...)
 {
-args<-list(...)
+alternative<-match.arg(alternative, choices=c("two.sided","less","greater"))
+    args <- list(...)
+    nx <- length(x)
+    ny <- length(y)
 
-nx <- length(x)
-ny <- length(y)
-
-if(all(x>0) & all(y>0))
- {lx <- log(x); ly <- log(y); active<-TRUE}
- else
-  {
-   if(any(x<0) | any(y<0))
-    {estimate<-NA; conf.int<-c(NA,NA); active=FALSE
-     warning("negative values occured")
+    if (all(x > 0) & all(y > 0)) {
+        lx <- log(x)
+        ly <- log(y)
+        active <- TRUE
     }
-    else
-     {
-     lx <- log(x+0.1); ly <- log(y+0.1); active<-TRUE
-     warning("0.1 added to x and y, because 0 accured")
-     }
+    else {
+        if (any(x < 0) | any(y < 0)) {
+            estimate <- NA
+            conf.int <- c(NA, NA)
+            active = FALSE
+            warning("negative values occured")
+        }
+        else {
+            lx <- log(x + 0.1)
+            ly <- log(y + 0.1)
+            active <- TRUE
+            warning("0.1 added to x and y, because 0 accured")
+        }
+    }
 
-  }
+if (active)
+    {
+    mlx <- mean(lx)
+    varlx <- var(lx)
+    mly <- mean(ly)
+    varly <- var(ly)
+    mx <- exp(mlx + 0.5 * varlx)
+    my <- exp(mly + 0.5 * varly)
+    estimate <- mx - my
 
-if(active)
- {
- 
- mlx <- mean(lx); varlx <- var(lx)
- mly <- mean(ly); varly <- var(ly)
+    Zx<-rnorm(n=sim, mean=0, sd=1)
+    Chix<-rchisq(n=sim, df=nx-1)
+    Tx <- mlx - (Zx*sqrt(varlx))/((sqrt(Chix)/sqrt(nx-1))*sqrt(nx)) + (varlx)/(2*Chix/(nx-1))
 
- mx <- exp(mlx + 0.5*varlx)
- my <- exp(mly + 0.5*varly)
+    Zy<-rnorm(n=sim, mean=0, sd=1)
+    Chiy<-rchisq(n=sim, df=ny-1)
+    Ty <- mly - (Zy*sqrt(varly))/((sqrt(Chiy)/sqrt(ny-1))*sqrt(ny)) + (varly)/(2*Chiy/(ny-1))
 
- estdelta <- mx - mly 
+    TD <- exp(Tx)-exp(Ty)
 
- invImatest <- diag(c(
- sqrt(varlx)/nx, (2*varlx)/nx,
- sqrt(varly)/ny, (2*varly)/ny )) 
+    switch(alternative,
+    two.sided={conf.int<-quantile(x=TD, probs=c((1-conf.level)/2, 1-(1-conf.level)/2))},
+    less={conf.int<-c( -Inf, quantile(x=TD, probs=conf.level) )},
+    greater={conf.int<-c( quantile(x=TD, probs=1-conf.level), Inf )}
+    )
+    }
 
- pddelta <- matrix(c(mx, 0.5*mx, -my, -0.5*my), ncol=1)
+METHOD<-"Difference of means assuming lognormal distribution"
 
- stderr <- sqrt(t(pddelta) %*% (invImatest) %*% pddelta)
- estimate <- estdelta
+attr(conf.int, which="methodname")<-METHOD
 
- if(alternative=="two.sided")
-  {
-   quantile <- qnorm(p=1-(1-conf.level)/2 ) 
-   conf.int<-c(estdelta-quantile*stderr, estdelta+quantile*stderr )
-  }
-
- if(alternative=="less")
-  {
-   quantile <- qnorm(p=1-(1-conf.level)) 
-   conf.int <- c(-Inf, estdelta+quantile*stderr )
-  }
-
- if(alternative=="greater")
-  {
-   quantile <- qnorm(p=1-(1-conf.level)) 
-   conf.int <- c(estdelta-quantile*stderr, Inf )
-  }
- }
-
-return(list(
-conf.int=conf.int,
-estimate=estimate))
+    return(list(conf.int = conf.int, estimate = estimate))
 }

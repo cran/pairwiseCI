@@ -1,7 +1,7 @@
 
 "pairwiseCIProp" <-
 function(formula, data, alternative="two.sided",
- conf.level=0.95, control=NULL, method, ...)
+ conf.level=0.95, control=NULL, method=NULL, ...)
 
 {
 
@@ -10,10 +10,11 @@ arglist<-list(...)
 arglist$alternative <- alternative
 arglist$conf.level <- conf.level
 
+
 if(method %in% c("Prop.ratio", "Prop.or")) 
- {sepcompname<-"/"}
+ {sepcompname <- "/"}
 else
- {sepcompname<-"-"}
+ {sepcompname <- "-"}
 
 # check the arguments
 
@@ -24,6 +25,9 @@ if(!is.numeric(mf[,1]))
 
 if(!is.factor(mf[,2]))
  {mf[,2]<-as.factor(mf[,2])}
+
+if(any(as.integer(floor(mf[,1])) - as.numeric(mf[,1])<0))
+ {warning("At least one value in the response is not an integer!")}
 
 # # # Split up into pairwise comparisons
 
@@ -69,17 +73,18 @@ lower <- numeric(length=nrow(CM))
 upper <- numeric(length=nrow(CM)) 
 estimate <- numeric(length=nrow(CM)) 
 
+
 for (a in 1:nrow(CM))
   {Cvec <- as.logical(CM[a,])
   groupnames <- levelnames[Cvec]
   data <- datalist[Cvec]
 
-  arglist$x <- data[[groupnames[1] ]]
-  arglist$y <- data[[groupnames[2] ]]
+  arglist$x <- data[[groupnames[2] ]]
+  arglist$y <- data[[groupnames[1] ]]
 
   temp <- do.call(what=method, args=arglist)
 
-  compnames[a] <- paste(groupnames, collapse="-")
+  compnames[a] <- paste(groupnames[c(2,1)], collapse=sepcompname)
   lower[a] <- temp$conf.int[[1]]
   upper[a] <- temp$conf.int[[2]]
   estimate[a] <- temp$estimate
@@ -124,11 +129,11 @@ for (a in 1:(k-1))
 
   temp <- do.call(what=method, args=arglist)
 
-  compnames[a] <- paste(groupnames,sepcompnames, control)
+  compnames[a] <- paste(groupnames,sepcompname, control)
   lower[a] <- temp$conf.int[[1]]
   upper[a] <- temp$conf.int[[2]]
   estimate[a] <- temp$estimate
-
+  
   }
 
 
@@ -147,8 +152,9 @@ list(
 estimate=estimate,
 lower=lower,
 upper=upper,
-compnames=compnames)
-)
+compnames=compnames,
+method=attr(temp$conf.int, "methodname")
+))
  
 }
 

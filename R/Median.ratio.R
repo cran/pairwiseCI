@@ -53,10 +53,13 @@ if(alternative=="less")
  {conf.int[1]<-0}
 else
  {if(alternative=="greater")
-  {conf.int[1]<-Inf}
+  {conf.int[2]<-Inf}
  }
 
 estimate <- median(x,0.5)[[1]]/median(y,0.5)[[1]]
+
+METHOD <- "Ratio of medians (percentile bootstrap)"
+attr(conf.int, which="methodname")<-METHOD
 
 return(list(
 conf.int=conf.int,

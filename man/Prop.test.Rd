@@ -25,8 +25,6 @@ The total number of successes and the total number of trials is then passed to p
    An object of class "htest", as defined by \code{prop.test(stats)}
 }
 
-\author{ Frank Schaarschmidt }
-
 \seealso{\code{\prop.test}, and \code{pairwise.prop.test} in \code{stats}}
 \examples{
 

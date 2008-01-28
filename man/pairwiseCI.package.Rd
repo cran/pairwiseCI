@@ -103,7 +103,7 @@ rooting
 aprootsRD<-pairwiseCI(cbind(root, noroot) ~ IBA,
  data=rooting, by=c("Age", "Position"), method="Prop.diff")
 
-# See ?pairwiseCIProp for further option to compare proportions
+# See ?pairwiseCIProp for further options to compare proportions
 
 # Or a test:
 

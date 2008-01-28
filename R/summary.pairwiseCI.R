@@ -5,48 +5,7 @@ byout <- object$byout
 bynames <- object$bynames
 method <- object$method
 
-  if(method=="Param.diff")
-   {methodI <- "Difference of means"}
-
-  if(method=="Param.ratio")
-   {methodI <- "Fieller: ratio of means"}
-
- if(method=="Lognorm.diff")
-   {methodI <- "Difference of means of Lognormals"}
-
-  if(method=="Lognorm.ratio")
-   {methodI <- "Ratio of means of Lognormals"}
-
-  if(method=="HL.diff")
-   {methodI <- "Exact Hodges-Lehmann intervals: difference of locations"}
-
-  if(method=="HL.ratio")
-   {methodI <- "Exact Hodges-Lehmann intervals: ratio of locations"}
-
-  if(method=="HD.diff")
-   {methodI <- "Difference of Harrell-Davis estimators: Percentile bootstrap"}
-
-  if(method=="Median.diff")
-   {methodI <- "Difference of Medians: Percentile bootstrap"}
-
-  if(method=="HD.ratio")
-   {methodI <- "Ratio of Harrell-Davis estimators: Percentile bootstrap"}
-
-  if(method=="Median.ratio")
-   {methodI <- "Ratio of Medians: Percentile bootstrap"}
-
-  if(method=="Prop.diff")
-   {methodI <- "Difference of proportions, Continuity corrected"}
-
-  if(method=="Prop.diffAdd2")
-   {methodI <- "Difference of proportions, Agresti-Caffo"}
-
-  if(method=="Prop.ratio")
-   {methodI <- "Ratio of proportions"}
-
-  if(method=="Prop.or")
-   {methodI <- "Odds ratio, Adjusted Woolf"}
-
+METHOD<-object[[1]]$method
 
 if(length(bynames)==1)
  {
@@ -84,10 +43,74 @@ else
    names(out)<-bynames
  }
 
-attr(out, "methodname") <- methodI
+attr(out, "methodname") <- METHOD
 attr(out, "conf.level") <- object$conf.level
 
 class(out)<-"summary.pairwiseCI"
 return(out)
 }
+
+
+
+
+
+#####################################
+
+
+
+`as.data.frame.pairwiseCI` <-
+function( x, ...)
+{
+byout <- x$byout
+bynames <- x$bynames
+method <- x$method
+
+METHOD<-byout[[1]]$method
+
+if(length(bynames)==1)
+ {
+   dat<-data.frame(byout[[1]]$estimate, byout[[1]]$lower, byout[[1]]$upper, byout[[1]]$compnames)
+
+   colnames(dat)<-c("estimate", "lower", "upper", "comparison")
+   rownames(dat)<-NULL
+ }
+else
+ {
+  
+  if(length(byout) != length(bynames))
+   {stop("INTERNAL: bynames and byout of different length!! ")}
+
+   bynames<-x$bynames
+
+   dat<-data.frame()
+   for (i in 1:length(byout))
+    {
+     estimate <- byout[[i]]$estimate
+     lower <- byout[[i]]$lower
+     upper <- byout[[i]]$upper
+     compnames <- byout[[i]]$compnames
+
+     by<-rep( bynames[i], times=length(estimate) )
+
+     dati<-data.frame( estimate, lower, upper, compnames, by)
+
+     dat<-rbind(dat, dati)  
+    }
+   colnames(dat)<-c("estimate","lower","upper", "comparison", "by")
+   rownames(dat)<-NULL
+ }
+
+attr(dat, "methodname") <- METHOD
+attr(dat, "conf.level") <- x$conf.level
+
+class(dat)<-"data.frame"
+return(dat)
+}
+
+
+###############################
+
+
+
+
 

@@ -45,13 +45,16 @@ boot.out<-do.call("boot", bootargs)
 conf.int <- boot.ci(boot.out=boot.out, conf = conf.levelI,type =c("perc"))$perc[4:5]
 
 if(alternative=="less")
- {conf.int[1]<-0}
+ {conf.int[1]<-(-Inf)}
 else
  {if(alternative=="greater")
-  {conf.int[1]<-Inf}
+  {conf.int[2]<-Inf}
  }
 
 estimate <- median(x,0.5)[[1]] - median(y,0.5)[[1]]
+
+METHOD <- "Difference of medians (percentile bootstrap)"
+attr(conf.int, which="methodname")<-METHOD
 
 return(list(
 conf.int=conf.int,

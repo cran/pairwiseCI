@@ -44,11 +44,9 @@ a data.frame containing the columns
 \item{groupy}{character vector: the names of the second group}
 }
 
-\author{ Frank Schaarschmidt }
-
 \seealso{ \code{\link{pairwiseTest}} for a user level function, 
 and 
  \code{\link{pairwise.t.test}}, \code{\link{pairwise.prop.test}}, \code{\link{p.adjust}} for further functions to calculate multiplicity adjusted p-values.  }
-}
+
 \keyword{ htest }
 

@@ -15,11 +15,11 @@
 }
 \details{
 }
+
 \source{
- Oberdoerfer, R.B. Example dataset from composition analyses of genetically modified oilseed rape seeds. 2003; BCS GmbH.
+ \bold{Oberdoerfer, R.B.} Example dataset from composition analyses of genetically modified oilseed rape seeds. 2003; BCS GmbH.
 }
 
-}
 \examples{
 
 data(sodium)

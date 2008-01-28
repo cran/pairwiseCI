@@ -66,10 +66,6 @@ pairwiseCIProp(formula, data, alternative="two.sided",
 
 }
 
-\author{ Frank Schaarschmidt, Institute of Biostatistics, Leibniz University of Hannover, Germany }
-
-
-
 \seealso{ \code{\link{pairwiseCI}} for the user level function;
 \code{\link{pairwiseCImethodsCont}}, and \code{\link{pairwiseCImethodsProp}} for a more detailed documentation of the implemented methods;
 \code{\link{summary.pairwiseCI}} for a summary function.
@@ -77,7 +73,7 @@ pairwiseCIProp(formula, data, alternative="two.sided",
  \code{t.test(stats)},  \code{wilcox.exact(exactRankTests)}, \code{prop.test(stats)} for the Sources of some of the CI methods,
 \pkg{multcomp} for simultaneous intervals for difference for various contrasts,
 \pkg{mratios} for simultaneous intervals for the ratio in many-to-one comparisons}
-}
+
 
 \keyword{ htest }
 

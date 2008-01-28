@@ -16,8 +16,4 @@ Print out confidence intervals calculated using pairwiseCI.
   \item{\dots}{further arguments to be passed to \code{print}}
 }
 
-\author{ Frank Schaarschmidt }
-
-}
 \keyword{ print }
-

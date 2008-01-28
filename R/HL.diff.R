@@ -21,6 +21,9 @@ addargs$conf.int <- TRUE
 
  conf.int <- temp$conf.int 
  estimate <- temp$estimate
+ METHOD <- "Difference of location using the Hodges-Lehmann estimator"
+
+attr(conf.int, which="methodname")<-METHOD
 
 return(list(
 conf.int=conf.int,
@@ -28,6 +31,3 @@ estimate=estimate
 ))
 
 }
-
-HL.diff(x=c(2,3,4,56,7,5), y=c(1,2,3,2,3,2,1,1,1))
-

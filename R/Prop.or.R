@@ -2,6 +2,7 @@
 function(x, y, conf.level=0.95, alternative="two.sided")
 {
 
+
  if( is.data.frame(x) && is.data.frame(y) )
   {
    colsx<-colSums(x)
@@ -52,8 +53,13 @@ function(x, y, conf.level=0.95, alternative="two.sided")
  if(is.na(lower)){lower <- -Inf}
  if(is.na(upper)){upper <- Inf}
 
+conf.int<-exp(c(lower, upper))
+
+METHOD<-"Adjusted Woolf interval for the odds ratio"
+attr(conf.int, which="methodname")<-METHOD
+
 return(
-list(conf.int=exp(c(lower, upper)),
+list(conf.int=conf.int,
 estimate=estimate)
 )  
 }

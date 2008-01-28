@@ -35,51 +35,6 @@ alternative <- x$alternative
 conf.level <- x$conf.level
 
 
-  if(method=="Param.diff")
-   {methodI <- "Difference of means"}
-
-  if(method=="Param.ratio")
-   {methodI <- "Ratio of means"}
-
-  if(method=="Lognorm.diff")
-   {methodI <- "Difference of means of Lognormals"}
-
-  if(method=="Lognorm.ratio")
-   {methodI <- "Ratio of means of Lognormals"}
-
-  if(method=="HL.diff")
-   {methodI <- "Exact Hodges-Lehmann intervals: difference of locations"}
-
-  if(method=="HL.ratio")
-   {methodI <- "Exact Hodges-Lehmann intervals: ratio of locations"}
-
-  if(method=="HD.diff")
-   {methodI <- "Difference of Harrell-Davis estimators: Percentile bootstrap"}
-
-  if(method=="Median.diff")
-   {methodI <- "Difference of Medians: Percentile bootstrap"}
-
-  if(method=="HD.ratio")
-   {methodI <- "Ratio of Harrell-Davis estimators: Percentile bootstrap"}
-
-  if(method=="Median.ratio")
-   {methodI <- "Ratio of Medians: Percentile bootstrap"}
-
-  if(method=="Prop.diff")
-   {methodI <- "Difference of proportions, Continuity corrected"}
-
-  if(method=="Prop.diffAdd2")
-   {methodI <- "Difference of proportions, Agresti-Caffo"}
-
-  if(method=="Prop.ratio")
-   {methodI <- "Ratio of proportions"}
-
-  if(method=="Prop.or")
-   {methodI <- "Odds ratio"}
-
-
-  conf.levelI <- paste("local confidence level = ", round(conf.level*100,2) ,"%")
-
 # # # shall the CI be plotted vertical or horizontal
 
 if(is.null(CIvert))
@@ -171,9 +126,7 @@ if(length(byout)==1)
 
  # # # define MAIN, SUB, YLAB,. . .
 
-if(is.null(main)){main <- paste(methodI,"
-", conf.levelI)}
-
+if(is.null(main)){main <- ""}
 
  # # # produce the RATIO-PLOT:
 
@@ -274,6 +227,8 @@ if( CIvert==FALSE )
  if (mymai[2] < ywidth) 
         mymai[2] <- ywidth
  par(mai=mymai, new=TRUE)
+
+num<-rev(num)
 
 plot(x = estimate, y = num, axes = FALSE, xlim = c(lplot, uplot), 
  type="p", pch=16, cex=CIcex,
@@ -393,8 +348,7 @@ if(length(byout)>1)
 
  # # # define MAIN, SUB, YLAB,. . .
 
-if(is.null(main)){main <- paste(methodI,"
-", conf.levelI)}
+if(is.null(main)){main <- " "}
 
 
  # # # produce the CI vertical-PLOT:
@@ -492,6 +446,8 @@ if( CIvert==FALSE )
  if (mymai[2] < ywidth) 
         mymai[2] <- ywidth
  par(mai=mymai, new=TRUE)
+
+num<-rev(num)
 
 plot(x = estimatek, y = num, axes = FALSE, xlim = plotlim, 
  type="p", pch=16, cex=CIcex,

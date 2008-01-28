@@ -46,17 +46,20 @@ boot.out<-do.call("boot", bootargs)
 conf.int <- boot.ci(boot.out=boot.out, conf = conf.levelI,type =c("perc"))$perc[4:5]
 
 if(alternative=="less")
- {conf.int[1]<-0}
+ {conf.int[1]<-(-Inf)}
 else
  {if(alternative=="greater")
-  {conf.int[1]<-Inf}
+  {conf.int[2]<-Inf}
  }
 
 estimate <- hdquantile(x,0.5)[[1]] - hdquantile(y,0.5)[[1]]
 
+METHOD<-"Difference of Harrell-Davis estimates for location (percentile bootstrap)"
+
 return(list(
 conf.int=conf.int,
-estimate=estimate
+estimate=estimate,
+methodname=METHOD
 ))
 
 }

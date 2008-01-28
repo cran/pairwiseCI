@@ -119,11 +119,14 @@ Note, that the 4 bootstrap versions will hardly make sense for small samples, be
  }
 }
 
-\author{ Frank Schaarschmidt, Institute of Biostatistics, Leibniz University of Hannover, Germany }
-
-\seealso{ \code{t.test(stats)},  \code{wilcox.exact(exactRankTests)}, \code{prop.test(stats)} for the CI methods,
+\seealso{
+\code{\link{as.data.frame.pairwiseCI}} to create a data.frame from the output,
+\code{\link{summary.pairwiseCI}} to create a more easily accessable list from the output,
+\code{\link{plot.pairwiseCI}} to plot the intervals.
+Further, see 
 \pkg{multcomp} for simultaneous intervals for difference for various contrasts,
-\pkg{mratios} for simultaneous intervals for the ratio in many-to-one comparisons}
+\pkg{mratios} for simultaneous intervals for the ratio in many-to-one comparisons
+for methods of multiple comparisons.}
 \examples{
 
 # some examples:
@@ -217,14 +220,14 @@ aprootsRD
 # Odds ratio
 
 aprootsOR<-pairwiseCI(cbind(root, noroot) ~ IBA,
- data=rooting, by=c("Age", "Position"), method="Prop.ratio")
+ data=rooting, by=c("Age", "Position"), method="Prop.or")
 
 aprootsOR
 
 # Risk ratio
 
 aprootsRR<-pairwiseCI(cbind(root, noroot) ~ IBA,
- data=rooting, by=c("Age", "Position"), method="Prop.or")
+ data=rooting, by=c("Age", "Position"), method="Prop.ratio")
 
 aprootsRR
 

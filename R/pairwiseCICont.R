@@ -1,7 +1,7 @@
 
 "pairwiseCICont" <-
 function(formula, data, alternative="two.sided",
- conf.level=0.95, method, control=NULL, ...)
+ conf.level=0.95, method=NULL, control=NULL, ...)
 
 {
 
@@ -10,10 +10,12 @@ arglist<-list(...)
 arglist$alternative <- alternative
 arglist$conf.level <- conf.level
 
-if(method %in% c("Param.ratio", "Lognorm.ratio", "HL.ratio", "HD.ratio", "Median.ratio")) 
- {sepcompname<-"/"}
+
+if(any(c("Param.ratio", "Lognorm.ratio", "HL.ratio", "HD.ratio", "Median.ratio")==method)) 
+ {sepcompname <- "/"}
 else
- {sepcompname<-"-"}
+ {sepcompname <- "-"}
+
 
 # check the arguments
 
@@ -74,12 +76,12 @@ for (a in 1:nrow(CM))
   groupnames <- levelnames[Cvec]
   data <- datalist[Cvec]
 
-  arglist$x <- data[[groupnames[1] ]]
-  arglist$y <- data[[groupnames[2] ]]
+  arglist$x <- data[[groupnames[2] ]]
+  arglist$y <- data[[groupnames[1] ]]
 
   temp <- do.call(what=method, args=arglist)
 
-  compnames[a] <- paste(groupnames, collapse="-")
+  compnames[a] <- paste(groupnames[c(2,1)], collapse=sepcompname)
   lower[a] <- temp$conf.int[[1]]
   upper[a] <- temp$conf.int[[2]]
   estimate[a] <- temp$estimate
@@ -147,8 +149,9 @@ list(
 estimate=estimate,
 lower=lower,
 upper=upper,
-compnames=compnames)
-)
+compnames=compnames,
+method=attr(temp$conf.int, "methodname")
+))
  
 }
 

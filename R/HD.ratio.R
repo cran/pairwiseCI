@@ -52,10 +52,14 @@ if(alternative=="less")
  {conf.int[1]<-0}
 else
  {if(alternative=="greater")
-  {conf.int[1]<-Inf}
+  {conf.int[2]<-Inf}
  }
 
 estimate <- hdquantile(x,0.5)[[1]]/hdquantile(y,0.5)[[1]]
+
+METHOD<-"Ratio of Harrell-Davis estimates for location (percentile bootstrap)"
+
+attr(conf.int, which="methodname")<-METHOD
 
 return(list(
 conf.int=conf.int,

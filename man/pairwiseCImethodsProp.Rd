@@ -3,7 +3,6 @@
 \alias{pairwiseCImethodsProp}
 
 \alias{Prop.diff}
-\alias{Prop.diffAdd2}
 \alias{Prop.ratio}
 \alias{Prop.or}
 
@@ -14,9 +13,8 @@ the difference (RD), ratio (RR) and odds ratio (OR) of proportions are implement
 }
 \usage{
 
-Prop.diff(x, y, conf.level=0.95, alternative="two.sided", ...)
-Prop.diffAdd2(x, y, conf.level = 0.95, alternative = "two.sided", ...)
-Prop.ratio(x, y, conf.level=0.95, alternative="two.sided")
+Prop.diff(x, y, conf.level=0.95, alternative="two.sided", CImethod="CC", ...)
+Prop.ratio(x, y, conf.level=0.95, alternative="two.sided", CImethod="GNC")
 Prop.or(x, y, conf.level=0.95, alternative="two.sided")
 
 }
@@ -26,6 +24,7 @@ Prop.or(x, y, conf.level=0.95, alternative="two.sided")
   \item{y}{ observations of the second sample: either a vector with number of success and failure, or a data.frame with two columns (the success and failures)) }
   \item{alternative}{ character string, either "two.sided", "less" or "greater"  }
   \item{conf.level}{ the comparisonwise confidence level of the intervals, where 0.95 is default }
+  \item{CImethod}{a single character string, one of \code{"CC", "AC", "NHS"};  \code{"CC"} for the continuity corrected, \code{"AC"} for Agresti and Caffos Add-4 interval, \code{"NHS"} for Newcombes Hybrid Score interval  }
   \item{\dots}{further arguments to be passed to the individual methods, see details}
 }
 
@@ -35,11 +34,15 @@ Prop.or(x, y, conf.level=0.95, alternative="two.sided")
  of proportions by calling \code{prop.test} in package \pkg{stats}, where the input are two
  vectors x and y giving the number of successes and failures in the two samples; 
 
-\item \code{Prop.diffAdd2} Uses the package binMto to calculate the confidence interval
- proposed by Agresti and Caffo (2000).
+\item \code{Prop.diff} with \code{CImethod="AC"} Calculates the Agresti-Caffo-Interval (Agresti and Caffo, 2000).
 
-\item \code{Prop.ratio} calculates the crude interval for the ratio of proportions 
+\item \code{Prop.diff} with \code{CImethod="NHS"} Calculates Newcombes Hybrid Score Interval (Newcombe, 1998).
+
+\item \code{Prop.ratio} with CImethod="GNC" calculates the crude interval for the ratio of proportions 
  according to Gart and Nam (1988), based on normal approximation on the log-scale.
+
+\item \code{Prop.ratio} with CImethod="Score" calculates the Score interval for the ratio of proportions 
+ according to Gart and Nam (1988), based on a Chi-Square approximation.
  
 \item \code{Prop.or} calculates the adjusted Woolf confidence interval for
  the odds ratio of proportions according to Lawson (2005). 
@@ -57,28 +60,22 @@ A list containing:
 
 \references{ 
 \itemize{
-\item \code{Prop.diff} uses \code{prop.test} in \pkg{stats}. This is currently the continuity corrected interval CC,
-as described in \bold{Newcombe R.G. (1998):} Interval Estimation for the Difference Between Independent Proportions: Comparison of Eleven Methods. Statistics in Medicine 17, 873-890. 
 
-\item \code{Prop.diffAdd2}: Calls the Agresti-Caffo-Interval as implemented in the package binMto.
-The method is described in: \bold{Agresti, A. and Caffo, B. (2000):} Simple and effective confidence intervals for proportions and differences of proportions result from adding two successes and two failures. 
+\item \bold{Newcombe R.G. (1998):} Interval Estimation for the Difference Between Independent Proportions: Comparison of Eleven Methods. Statistics in Medicine 17, 873-890. 
+
+\item \bold{Agresti, A. and Caffo, B. (2000):} Simple and effective confidence intervals for proportions and differences of proportions result from adding two successes and two failures. 
 American Statistician 54 (4), 280-288.
 
-\item \code{Prop.ratio}
-\bold{Gart, JJ and Nam, J (1988)}: Approximate interval estimation of the ratio of binomial parameters: A review and corrections for skewness.
+\item \bold{Gart, JJ and Nam, J (1988)}: Approximate interval estimation of the ratio of binomial parameters: A review and corrections for skewness.
  Biometrics 44, 323-338.
-Additional simulation results are given in: 
+
 \bold{Dann, RS and Koch, GG (2005)}: Review and evaluation of methods for computing confidence intervals for the ratio of two proportions and considerations for non-inferiority clinical trials.
  Journal of Biopharmaceutical Statistics, 15, 85-107.
 
-\item \code{Prop.or} e.g. in:
-\bold{Lawson, R (2005)}: Small sample confidence intervals for the odds ratio.
+\item \bold{Lawson, R (2005)}: Small sample confidence intervals for the odds ratio.
  Communication in Statistics Simulation and Computation, 33, 1095-1113.
  }
 }
-
-\author{ Frank Schaarschmidt, Institute of Biostatistics, Leibniz University of Hannover, Germany }
-
 
 \examples{
 

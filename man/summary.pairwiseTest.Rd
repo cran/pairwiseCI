@@ -31,8 +31,6 @@ A dataframe, with columns
   and possibly further columns containing levels of by.
 }
 
-\author{ Frank Schaarschmidt }
-
 \examples{
 
 data(Oats)

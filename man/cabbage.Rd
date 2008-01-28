@@ -3,7 +3,7 @@
 \docType{data}
 \title{Yield of cabbage in one-factorial field trial}
 \description{
-  
+Cabbage yield in dependence of four doses of fertilizer. 
 }
 \usage{data(cabbage)}
 \format{

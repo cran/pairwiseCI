@@ -185,6 +185,6 @@ CIcompP<-pairwiseCI(yield~P, data=bean, by="T",
 plot(CIcompP)
 
   }
-}
+
 \keyword{ htest }
 

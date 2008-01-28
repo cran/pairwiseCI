@@ -6,11 +6,12 @@ function( x , digits=4, ...)
  method <- x$method
  pargs<-list(...)
  pargs$digits<-digits
+ METHOD <- attr(byout[[1]], "method")
 
 
 if(length(byout) != length(bynames)) {stop("INTERNAL: bynames and byout of different length!! ")}
 
-cat("P-values calculated using function", method, "\n")
+cat("P-values calculated using","\n", METHOD, "\n")
 cat("\n")
 
  for (i in 1:length(byout))

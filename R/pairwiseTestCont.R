@@ -69,12 +69,12 @@ for (a in 1:nrow(CM))
   groupnames <- levelnames[Cvec]
   data <- datalist[Cvec]
 
-  compnames[a] <- paste(groupnames, collapse="-")
+  compnames[a] <- paste(groupnames[c(2,1)], collapse="-")
   groupx[a] <- groupnames[1]
   groupy[a] <- groupnames[2]
 
-  arglist$x <- data[[groupnames[1] ]]
-  arglist$y <- data[[groupnames[2] ]]
+  arglist$x <- data[[groupnames[2] ]]
+  arglist$y <- data[[groupnames[1] ]]
 
   temp <- do.call(what=method, args=arglist)
   p.value[a] <- temp$p.value
@@ -134,7 +134,7 @@ compnames=compnames,
 groupx=groupx,
 groupy=groupy
 )
-
+attr(out, "method")<-temp$method
 
 return(out)
  

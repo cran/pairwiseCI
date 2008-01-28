@@ -18,8 +18,7 @@
 A list.
 }
 
-\author{ Frank Schaarschmidt }
-
+\seealso{ \code{link{as.data.frame.pairwiseCI}}  }
 
 \examples{
 
