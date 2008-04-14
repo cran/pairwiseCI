@@ -35,7 +35,7 @@ METHOD<-"Gart-Nam crude log interval"
       nyI<-ny+0.5
       estimate <- (x[1]/nx)/(y[1]/ny)
      }
-   else{stop("Prop.or needs two data.frames or two numeric vectors of length 2 as input")}
+   else{stop("Prop.ratio needs two data.frames or two numeric vectors of length 2 as input")}
    }
 
  estI <- log( (XI/nxI)/(YI/nyI) )
@@ -93,7 +93,7 @@ METHOD<-"Gart-Nam Score interval"
       x1<-x1I<-x[1]
       x0<-x0I<-y[1]
      }
-   else{stop("Prop.or needs two data.frames or two numeric vectors of length 2 as input")}
+   else{stop("Prop.ratio needs two data.frames or two numeric vectors of length 2 as input")}
    }
 
 x0<-x0I<-y[1]

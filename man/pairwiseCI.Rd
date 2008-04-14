@@ -12,7 +12,7 @@ Confidence intervals (CI) for difference or ratio of location parameters of two 
  and ratio of location based on the Hodges-Lehmann estimator; bootstrap intervalls for ratio and difference
  of Medians and Harrell-Davis estimators a more robust alternatives to the Hodges-Lehmann estimator (boot, Hmisc); 
  the Score test derived CI for the difference (prop.test(stats)), Woolf-interval for the odds-ratio
- and the crude Gart-Nam interval for the ratio of proportions.
+ and a crude asymptotic as well as an iterative interval for the ratio of proportions.
 }
 \usage{
 pairwiseCI(formula, data, by = NULL,
@@ -36,17 +36,17 @@ pairwiseCI(formula, data, by = NULL,
   \itemize{
     \item "Param.diff": Difference of two means, with additional argument \code{var.equal=FALSE}(default) as in \code{t.test(stats)},
     \item "Param.ratio": Ratio of two means, with additional argument \code{var.equal=FALSE}(default) as in \code{t.test.ratio(mratios)},
-    \item "Lognorm.diff": Difference of two means, assuming a lognormal distribution,
-    \item "Lognorm.ratio": Ratio of two means, assuming a lognormal distribution,
-    \item "HL.diff": Exact nonparametric CI for difference of locations based on the Hodges-Lehmann estimator,
-    \item "HL.ratio": Exact nonparametric CI for ratio of locations, based on the Hodges-Lehmann estimator,
-    \item "HD.diff": Nonparametric CI for difference of locations, based on the Harrell-Davis estimator (percentile bootstrap CI),
-    \item "HD.ratio": Nonparametric CI for ratio of locations, based on the Harrell-Davis estimator (percentile bootstrap CI),
-    \item "Median.diff": Nonparametric CI for difference of locations, based on the medians (percentile bootstrap CI),
-    \item "Median.ratio": Nonparametric CI for ratio of locations, based on the medians (percentile bootstrap CI),
-    \item "Prop.diff": Asymptotic continuity corrected CI for difference of proportions \code{prop.test},
+    \item "Lognorm.diff": Difference of two means, assuming a lognormal distribution, based on generalized pivotal quantities,
+    \item "Lognorm.ratio": Ratio of two means, assuming a lognormal distribution, based on generalized pivotal quantities,
+    \item "HL.diff": Exact conditional nonparametric CI for difference of locations based on the Hodges-Lehmann estimator,
+    \item "HL.ratio": Exact conditional nonparametric CI for ratio of locations, based on the Hodges-Lehmann estimator,
+    \item "HD.diff": Nonparametric CI for difference of locations, based on the Harrell-Davis estimator (percentile bootstrap, stratified by the grouping variable),
+    \item "HD.ratio": Nonparametric CI for ratio of locations, based on the Harrell-Davis estimator (percentile bootstrap, stratified by the grouping variable),
+    \item "Median.diff": Nonparametric CI for difference of locations, based on the medians (percentile bootstrap, stratified by the grouping variable),
+    \item "Median.ratio": Nonparametric CI for ratio of locations, based on the medians (percentile bootstrap, stratified by the grouping variable),
+    \item "Prop.diff": Asymptotic continuity corrected CI for difference of proportions as implemented in \code{prop.test (stats)},
     \item "Prop.diffAdd2": Approximate CI for difference of proportions according to Agresti and Caffo (2000),
-    \item "Prop.ratio": Asymptotic CI for ratio of proportions,
+    \item "Prop.ratio": Asymptotic CI (normal approximation on the log: "GNC") or iterative CI ("Score") for ratio of proportions,
     \item "Prop.or": Asymptotic CI for the odds ratio,
     }
   See \code{?pairwiseCImethods} for details.
@@ -58,7 +58,10 @@ pairwiseCI(formula, data, by = NULL,
 }
 \details{
  Note that all the computed intervals are without adjustment for multiplicity by default. 
-
+ When based on crude normal approximations or crude non-parametric bootstrap methods, the derived confidence intervals can be unreliable for small sample sizes.
+ The method implemented here split the data set into small subsets (according to the grouping variable in \code{formula} and the variable specified in \code{by})
+ and compute confidence intervals only based each particular subset. Please note that, when a (generalized) linear model can be reasonable assumed to describe the 
+ complete data set, it is smarter to compute confidence intervals based on the model estimators. Methods to do this are, e.g., implemented in the packages \pkg{stats}, \pkg{multcomp}, \pkg{mratios}.
 }
 \value{
  an object of class "pairwiseCI" structured as:
@@ -125,8 +128,9 @@ Note, that the 4 bootstrap versions will hardly make sense for small samples, be
 \code{\link{plot.pairwiseCI}} to plot the intervals.
 Further, see 
 \pkg{multcomp} for simultaneous intervals for difference for various contrasts,
-\pkg{mratios} for simultaneous intervals for the ratio in many-to-one comparisons
-for methods of multiple comparisons.}
+\pkg{mratios} for simultaneous intervals for the ratio of means,
+\pkg{stats} \code{p.adjust}, \code{pairwise.t.test}, \code{pairwise.prop.test}, \code{pairwise.wilcox.test},
+\code{TukeyHSD} for methods of multiple comparisons.}
 \examples{
 
 # some examples:
@@ -218,6 +222,7 @@ aprootsRD<-pairwiseCI(cbind(root, noroot) ~ IBA,
 aprootsRD
 
 # Odds ratio
+
 
 aprootsOR<-pairwiseCI(cbind(root, noroot) ~ IBA,
  data=rooting, by=c("Age", "Position"), method="Prop.or")

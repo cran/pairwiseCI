@@ -1,5 +1,5 @@
 "Prop.or" <- 
-function(x, y, conf.level=0.95, alternative="two.sided")
+function(x, y, conf.level=0.95, alternative="two.sided", CImethod="Woolf")
 {
 
 
