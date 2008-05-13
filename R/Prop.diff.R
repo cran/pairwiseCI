@@ -1,10 +1,10 @@
 "Prop.diff" <-
 
-function(x, y, conf.level=0.95, alternative="two.sided", CImethod="CC", ...)
+function(x, y, conf.level=0.95, alternative="two.sided", CImethod=c("CC","AC","NHS"), ...)
 {
  args<-list(...)
 
-CImethod<-match.arg(CImethod, choices=c("CC","AC","NHS"))
+CImethod<-match.arg(CImethod)
 
  if( is.data.frame(x) && is.data.frame(y) )
   {
@@ -50,8 +50,8 @@ require(binMto)
 
 switch(alternative,
 "two.sided"={args$quantile<-qnorm( 1-(1-conf.level)/2 ) },
-"less"={args$quantile<-qnorm(1-conf.level)},
-"greater"={args$quantile<-qnorm(conf.level)}
+"less"={args$quantile<-qnorm(conf.level)},
+"greater"={args$quantile<-qnorm(1-conf.level)}
 )
 
  args$alternative <- alternative
@@ -77,8 +77,8 @@ require(binMto)
 
 switch(alternative,
 "two.sided"={args$quantile<-qnorm( 1-(1-conf.level)/2 ) },
-"less"={args$quantile<-qnorm(1-conf.level)},
-"greater"={args$quantile<-qnorm(conf.level)}
+"less"={args$quantile<-qnorm(conf.level)},
+"greater"={args$quantile<-qnorm(1-conf.level)}
 )
 
  args$alternative <- alternative

@@ -1,8 +1,8 @@
 "Prop.ratio" <-
-function(x, y, conf.level=0.95, alternative="two.sided", CImethod="GNC")
+function(x, y, conf.level=0.95, alternative="two.sided", CImethod=c("GNC", "Score"))
 {
 
-CImethod<-match.arg(CImethod, choices=c("GNC", "Score"))
+CImethod<-match.arg(CImethod)
 
 alternative<-match.arg(alternative, choices=c("two.sided","less","greater"))
 

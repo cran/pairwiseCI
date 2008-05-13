@@ -1,7 +1,11 @@
 "Prop.or" <- 
-function(x, y, conf.level=0.95, alternative="two.sided", CImethod="Woolf")
+function(x, y, conf.level=0.95, alternative="two.sided", CImethod=c("Woolf", "Exact"), ...)
 {
 
+CImethod<-match.arg(CImethod)
+
+switch(CImethod,
+Woolf={
 
  if( is.data.frame(x) && is.data.frame(y) )
   {
@@ -57,6 +61,39 @@ conf.int<-exp(c(lower, upper))
 
 METHOD<-"Adjusted Woolf interval for the odds ratio"
 attr(conf.int, which="methodname")<-METHOD
+},
+
+Exact={
+ if( is.data.frame(x) && is.data.frame(y) )
+  {
+   colsx<-colSums(x)
+   colsy<-colSums(y)
+   tab<-rbind(colsx,colsy)
+  }
+  else
+   {
+    if((is.numeric(x) && is.numeric(y)) && ( length(x)==2 && length(y)==2 ))
+     {
+     tab<-rbind(x,y)
+     }
+   else{stop("Prop.or needs two data.frames or two numeric vectors of length 2 as input")}
+   }
+
+args<-list(...)
+args$x<-tab
+args$alternative<-alternative
+args$conf.level<-conf.level
+
+temp<-do.call("fisher.test", args)
+conf.int<-temp$conf.int
+estimate<-temp$estimate
+
+METHOD<-"Exact confidence interval for the odds ratio"
+attr(conf.int, which="methodname")<-METHOD
+
+})
+
+
 
 return(
 list(conf.int=conf.int,

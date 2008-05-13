@@ -13,9 +13,9 @@ the difference (RD), ratio (RR) and odds ratio (OR) of proportions are implement
 }
 \usage{
 
-Prop.diff(x, y, conf.level=0.95, alternative="two.sided", CImethod="CC", ...)
-Prop.ratio(x, y, conf.level=0.95, alternative="two.sided", CImethod="GNC")
-Prop.or(x, y, conf.level=0.95, alternative="two.sided", CImethod="Woolf")
+Prop.diff(x, y, conf.level=0.95, alternative="two.sided", CImethod=c("CC", "AC","NHS"), ...)
+Prop.ratio(x, y, conf.level=0.95, alternative="two.sided", CImethod=c("GNC", "Score"))
+Prop.or(x, y, conf.level=0.95, alternative="two.sided", CImethod=c("Woolf", "Exact"), ...)
 
 }
 
@@ -37,7 +37,7 @@ Please note, that except for function \code{prop.or} with \code{CImethod="Quasib
 
 \itemize{
 \item \code{Prop.diff} calculates the asymptotic Continuity Corrected confidence interval for the difference
- of proportions by calling \code{prop.test} in package \pkg{stats}.
+ of proportions by calling \code{prop.test} in package \pkg{stats}. See \code{?prop.test} for details.
  NOTE: When there are repeated observations (input as a data.frame with several rows), intervals are calculated based on the sums over the rows!
 
 \item \code{Prop.diff} with \code{CImethod="AC"} Calculates the Agresti-Caffo-Interval (Agresti and Caffo, 2000).
@@ -57,6 +57,11 @@ Please note, that except for function \code{prop.or} with \code{CImethod="Quasib
 \item \code{Prop.or} with \code{CImethod="Woolf"} calculates the adjusted Woolf confidence interval for
  the odds ratio of proportions as, e.g., described in Lawson (2005).
  NOTE: When there are repeated observations (input as a data.frame with several rows), intervals are calculated based on the sums over the rows!
+
+\item \code{Prop.or} with \code{CImethod="Exact"} calculates the exact confidence interval for
+ the odds ratio of proportions corresponding to Fishers exact test, by calling to \code{fisher.test} in \pkg{stats}. For details, see \code{?fisher.test}.
+ NOTE: When there are repeated observations (input as a data.frame with several rows), intervals are calculated based on the sums over the rows!
+
 
 }
 }
@@ -124,6 +129,103 @@ Prop.diff(x=c(16,32),y=c(29,19))
 Prop.ratio(x=c(16,32),y=c(29,19))
 
 Prop.or(x=c(16,32),y=c(29,19))
+
+# # # 
+
+# Comparison with original papers:
+
+# Risk difference:
+
+# Risk difference, CC
+
+# Continuity corrected interval:
+
+# 1.Comparison with results presented in Newcombe (1998),
+# Table II, page 877, 10. Score, CC
+# column 1 (a): 56/70-48/80: [0.0441; 0.3559]
+
+
+Prop.diff(x=c(56,70-56),y=c(48,80-48), alternative="two.sided",
+ conf.level=0.95, CImethod="CC")
+
+
+# I. Risk difference, NHS
+
+# Newcombes Hybrid Score interval:
+
+# 1.Comparison with results presented in Newcombe (1998),
+# Table II, page 877, 10. Score, noCC
+# column 1 (a): 56/70-48/80: [0.0524; 0.3339]
+
+
+Prop.diff(x=c(56,70-56),y=c(48,80-48), alternative="two.sided",
+ conf.level=0.95, CImethod="NHS")
+
+
+Prop.diff(x=c(56,70-56),y=c(48,80-48), alternative="greater",
+ conf.level=0.975, CImethod="NHS")
+
+Prop.diff(x=c(56,70-56),y=c(48,80-48), alternative="less",
+ conf.level=0.975, CImethod="NHS")
+
+
+# 2.Comparison with results presented in Newcombe (1998),
+# Table II, page 877, 10. Score, noCC
+# column 2 (b): 9/10-3/10: [0.1705; 0.8090]
+
+
+Prop.diff(x=c(9,1),y=c(3,7), alternative="two.sided",
+ conf.level=0.95, CImethod="NHS")
+
+
+# 3.Comparison with results presented in Newcombe (1998),
+# Table II, page 877, 10. Score, noCC
+# column 2 (h): 10/10-0/10: [0.6075; 1.000]
+
+
+Prop.diff(x=c(10,0),y=c(0,10), alternative="two.sided",
+ conf.level=0.95, CImethod="NHS")
+
+
+# II. Risk ratio, Score
+# Score interval according to Gart and Nam (1988)
+
+# 1.Comparison with results presented in Gart and Nam (1998),
+# Section 5 (page 327), Example 1
+# x1/n1=8/15 x0/n0=4/15:
+# Log: [0.768, 4.65]
+# Score: [0.815; 5.34]
+
+# Log (GNC)
+Prop.ratio(x=c(8,7),y=c(4,11), alternative="two.sided",
+ conf.level=0.95, CImethod="GNC")
+
+# Score (Score)
+Prop.ratio(x=c(8,7),y=c(4,11), alternative="two.sided",
+ conf.level=0.95, CImethod="Score")
+
+Prop.ratio(x=c(8,7),y=c(4,11), alternative="less",
+ conf.level=0.975, CImethod="Score")
+
+Prop.ratio(x=c(8,7),y=c(4,11), alternative="greater",
+ conf.level=0.975, CImethod="Score")
+
+
+
+# 2.Comparison with results presented in Gart and Nam (1998),
+# Section 5 (page 328), Example 2
+# x1/n1=6/10 x0/n0=6/20:
+# Log: [0.883, 4.32]
+# Score: [0.844; 4.59]
+
+# Log (GNC)
+Prop.ratio(x=c(6,4),y=c(6,14), alternative="two.sided",
+ conf.level=0.95, CImethod="GNC")
+
+# Score (Score)
+Prop.ratio(x=c(6,4),y=c(6,14), alternative="two.sided",
+ conf.level=0.95, CImethod="Score")
+
 
  }
 
