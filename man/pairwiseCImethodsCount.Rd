@@ -1,6 +1,6 @@
 \name{pairwiseCImethodsCount}
 
-
+\alias{pairwiseCImethodsCount}
 \alias{Poisson.ratio}
 \alias{Quasipoisson.ratio}
 \alias{Negbin.ratio}

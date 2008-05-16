@@ -21,8 +21,7 @@
     \item{\code{noroot}}{a numeric vector, number of cutting with successfull rooting, out of 12 trials}
   }
 }
-\details{
-}
+
 \source{
   Data taken from Msc thesis by Dawit Mamushet Yifru,
   Institute of Floriculture,

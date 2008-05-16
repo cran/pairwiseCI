@@ -13,8 +13,6 @@
     \item{\code{Sodiumcontent}}{a numeric vector}
   }
 }
-\details{
-}
 
 \source{
  \bold{Oberdoerfer, R.B.} Example dataset from composition analyses of genetically modified oilseed rape seeds. 2003; BCS GmbH.
