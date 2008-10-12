@@ -1,7 +1,7 @@
 \name{rooting}
 \alias{rooting}
 \docType{data}
-\title{Rooting of plants}
+\title{Rooting (success/failure) of plants in a 3-factorial field trial}
 \description{
  Part of an experiment on propagation of plant genera Acer and Pyrus.
  Cuttings were taken from motherplants of age 5 and age 20, from top or base,
@@ -17,8 +17,8 @@
     \item{\code{Position}}{a factor with levels \code{B} and \code{T}, for "base" and "top" cuttings}
     \item{\code{IBA}}{a numeric vector, specifying the concentration of IBA}
     \item{\code{Rep}}{a numeric vector, number of replication}
-    \item{\code{root}}{a numeric vector, number of cutting with successfull rooting, out of 12 trials}
-    \item{\code{noroot}}{a numeric vector, number of cutting with successfull rooting, out of 12 trials}
+    \item{\code{root}}{a numeric vector, number of cuttings with successfull rooting, out of 12 trials}
+    \item{\code{noroot}}{a numeric vector, number of cuttings showing no rooting, out of 12 trials}
   }
 }
 

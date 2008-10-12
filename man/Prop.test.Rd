@@ -14,18 +14,18 @@ Prop.test(x, y, alternative = "two.sided", ...)
   \item{y}{ a vector of success and failure in sample y,
  or a data.frame with a column of successes and a column of failures, then colSums are used. }
   \item{alternative}{ character string defining the alternative hypothesis }
-  \item{\dots}{ arguments to be passed to \code{prop.test(stats)} }
+  \item{\dots}{ arguments to be passed to \kbd{prop.test(stats)} }
 }
 \details{
-Just a wrapper function to call \code{prop.test(stats)}. 
+Just a wrapper function to call \kbd{prop.test(stats)}. 
 If x, y are data.frames containing two columns taken to be counts of successes and counts of failures, columnwise sums of x,y are calculated.
 The total number of successes and the total number of trials is then passed to prop.test.
 }
 \value{
-   An object of class "htest", as defined by \code{prop.test(stats)}
+   An object of class "htest", as defined by \kbd{prop.test(stats)}
 }
 
-\seealso{\code{\prop.test}, and \code{pairwise.prop.test} in \code{stats}}
+\seealso{\kbd{prop.test}, and \kbd{pairwise.prop.test} in \pkg{stats}}
 \examples{
 
 

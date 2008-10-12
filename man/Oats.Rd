@@ -1,7 +1,7 @@
 \name{Oats}
 \alias{Oats}
 \docType{data}
-\title{ The Oats data set }
+\title{The Oats data set}
 \description{
 The yield of three varieties of Oat was recorded in a field trial with 6 Blocks on 4 levels of nitrogen fertilization.
 Originally a split plot design, here simply for demonstration of pairwiseCI.  

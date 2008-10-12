@@ -2,7 +2,7 @@
 \alias{pairwiseMEP}
 \alias{pairwiseMEP.data.frame}
 
-\title{ Wrapper to compute confidence intervals for multiple endpoints  }
+\title{Wrapper to compute confidence intervals for multiple endpoints}
 \description{
  This is a test version!
  Computes confidence intervals for pair wise comparisons of groups (assuming independent observations)
@@ -22,13 +22,13 @@ pairwiseMEP(x, ...)
 
 \arguments{
   \item{x}{ a data.frame }
-  \item{ep}{ a vector of character strings, naming the variables in \code{x} which are the response variables (endpoints) of interest }
+  \item{ep}{ a vector of character strings, naming the variables in \kbd{x} which are the response variables (endpoints) of interest }
   \item{f}{ a single character string, naming a factor variable in data which splits the dataset into treatment groups }
-  \item{control}{ optionally, a single character string, naming a factor level in variable \code{f}, which shall be considered as control group; if omitted (default) all pairwise comparisons are computed }
+  \item{control}{ optionally, a single character string, naming a factor level in variable \kbd{f}, which shall be considered as control group; if omitted (default) all pairwise comparisons are computed }
   \item{conf.level}{ a single numeric between 0.5 and 1, specifying the local confidence level of the single confidence intervals}
-  \item{alternative}{ a single character string, one of \code{'two.sided'}, \code{'less'}, \code{'greater'} }
+  \item{alternative}{ a single character string, one of \kbd{'two.sided'}, \kbd{'less'}, \kbd{'greater'} }
   \item{method}{ a vector of character strings, specifying the method for computation of the confidence intervals, see \code{\link{pairwiseCImethodsCont}} and \code{\link{pairwiseCImethodsCount}} for possible options;
- must have length 1 or the same length as \code{ep}! }
+ must have length 1 or the same length as \kbd{ep}! }
   \item{\dots}{  further arguments to be passed to \code{\link{pairwiseCI}}, options are listed in \code{\link{pairwiseCImethodsCont}} and \code{\link{pairwiseCImethodsCount}}   }
 }
 \details{
@@ -36,8 +36,8 @@ pairwiseMEP(x, ...)
 }
 \value{
 
-  \item{conf.int}{ a list with one element for each element in \code{ep}, containing the estimates, lower and upper limits and the comparison names and by levels in the format of a data.frame }
-  \item{data}{ as input \code{x} }
+  \item{conf.int}{ a list with one element for each element in \kbd{ep}, containing the estimates, lower and upper limits and the comparison names and by levels in the format of a data.frame }
+  \item{data}{ as input \kbd{x} }
   \item{ep}{ as input }
   \item{f}{ as input }
   \item{control}{ as input }

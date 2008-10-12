@@ -13,7 +13,7 @@ Print out confidence intervals calculated using pairwiseCI.
 \arguments{
   \item{x}{ an object of class "pairwiseCI", the output of function pairwiseCI() }
   \item{digits}{ integer, to which decimal output shall be rounded }
-  \item{\dots}{further arguments to be passed to \code{print}}
+  \item{\dots}{further arguments to be passed to \kbd{print}}
 }
 
 \keyword{ print }

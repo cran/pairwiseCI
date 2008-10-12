@@ -1,7 +1,8 @@
 \name{plotCI.pairwiseMEP}
 \alias{plotCI.pairwiseMEP}
 
-\title{ Plot confidence intervals calculated by "pairwiseMEP".}
+\title{ Plot confidence intervals calculated by "pairwiseMEP"}
+
 \description{
  Creates plot of confidence intervals calculated by calling "pairwiseMEP".
 }
@@ -11,9 +12,9 @@
 }
 
 \arguments{
-  \item{x}{ an object of class \code{'pairwiseMEP'} as can be created by calling \code{\link{pairwiseMEP}} }
-  \item{whichep}{ an optional vector of character strings (or integers); specifying the names (or indices in \code{x$conf.int}) of those response variables for which the confidence intervals shall be plotted }
-  \item{\dots}{ further arguments to be passed to \code{plotCI} in package \pkg{MCPAN}, see \code{?plotCI} for details}
+  \item{x}{ an object of class \kbd{'pairwiseMEP'} as can be created by calling \code{\link{pairwiseMEP}} }
+  \item{whichep}{ an optional vector of character strings (or integers); specifying the names (or indices in the element \kbd{conf.int} of the list returned by \kbd{pairwiseMEP}) of those response variables for which the confidence intervals shall be plotted }
+  \item{\dots}{ further arguments to be passed to \kbd{plotCI} in package \pkg{MCPAN}, see \kbd{?plotCI} for details}
 }
 
 \value{

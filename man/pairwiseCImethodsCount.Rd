@@ -5,7 +5,7 @@
 \alias{Quasipoisson.ratio}
 \alias{Negbin.ratio}
 
-\title{ Confidence interval methods implemented for count data in pairwiseCI }
+\title{Confidence intervals for two sample comparisons of count data}
 
 \description{
 Confidence interval methods available for pairwiseCI for comparison of two independent samples. Methods for count data.
@@ -30,29 +30,29 @@ Negbin.ratio(x, y, conf.level=0.95, alternative="two.sided")
 \details{
 \itemize{
 
-\item \code{Poisson.ratio} calculates a confidence interval for the ratio of
- means assuming the Poisson distribution of the response by fitting a generalized linear model with log-link using \code{glm} in package \pkg{stats},
+\item \kbd{Poisson.ratio} calculates a confidence interval for the ratio of
+ means assuming the Poisson distribution of the response by fitting a generalized linear model with log-link using \kbd{glm} in package \pkg{stats},
  constructing a likelihood profile and deriving a equal-tailed confidence interval from this profile. Please not that confidence intervals from this method
   produce severely misleading results, when there is extra-Poisson variation in the data.
 
 
-\item \code{Quasipoisson.ratio} calculates a confidence interval for the ratio of
- means of the response by fitting a generalized linear model with family \code{quasipoisson} and log-link using \code{glm} in package \pkg{stats},
+\item \kbd{Quasipoisson.ratio} calculates a confidence interval for the ratio of
+ means of the response by fitting a generalized linear model with family \kbd{quasipoisson} and log-link using \kbd{glm} in package \pkg{stats},
  constructing a deviance profile and deriving a equal-tailed confidence interval from this profile.
 
 
-\item \code{Negbin.ratio} calculates a confidence interval for the ratio of
- means assuming the negative binomial distribution of the response by fitting a generalized linear model with log-link using \code{glm.nb} in package \pkg{MASS},
+\item \kbd{Negbin.ratio} calculates a confidence interval for the ratio of
+ means assuming the negative binomial distribution of the response by fitting a generalized linear model with log-link using \kbd{glm.nb} in package \pkg{MASS},
  constructing a likelihood profile and deriving a equal-tailed confidence interval from this profile.
 
 }
 
 Note, that for all the methods, a separate glm is fitted for each two-sample comparison! When a common model can be reasonbly assumed for all the data, there are smarter methods of constructing confidence
-intervals for groupwise comparisons, based on a common model, see e.g. the function \code{confint} in package \pkg{stats}, the function \code{confint.glm} in package \pkg{MASS} and the function \code{confint.glht} in package \pkg{multcomp}.
+intervals for groupwise comparisons, based on a common model, see e.g. the function \kbd{confint} in package \pkg{stats}, the function \kbd{confint.glm} in package \pkg{MASS} and the function \kbd{confint.glht} in package \pkg{multcomp}.
 
 Note, that the code used here is slightly changed from the original code by Venables and Ripley, or Bates and Watts. An limit is imposed on the parameter space in which the profile is constructed. By that limitation, intervals can also be constructed for extreme cases with all observations in one group being zero.
 
-Note, that the \code{Poisson.ratio} can be used when only one count is present in each group. For \code{Quasipoisson.ratio}, \code{Negbin.ratio}, repeated observations are necessary in each group.
+Note, that the \kbd{Poisson.ratio} can be used when only one count is present in each group. For \kbd{Quasipoisson.ratio}, \kbd{Negbin.ratio}, repeated observations are necessary in each group.
 
 }
 

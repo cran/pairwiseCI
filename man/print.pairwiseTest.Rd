@@ -10,7 +10,7 @@ Print function for pairwiseTest objects
 \arguments{
   \item{x}{ an object of class "pairwiseTest" }
   \item{digits}{ digits for rounding }
-  \item{\dots}{further arguments to be passed to \code{print}}
+  \item{\dots}{further arguments to be passed to \kbd{print}}
 }
 
 \keyword{print}

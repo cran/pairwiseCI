@@ -1,7 +1,7 @@
 \name{as.data.frame.pairwiseCI}
 \alias{as.data.frame.pairwiseCI}
 
-\title{ Coerces output of pairwiseCI into a data.frame }
+\title{Coercing "pairwiseCI" to a "data.frame"}
 \description{
  Creates a data.frame from the output of pairwiseCI.
 }

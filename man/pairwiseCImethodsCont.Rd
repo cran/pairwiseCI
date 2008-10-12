@@ -16,7 +16,7 @@
 \alias{HD.diff}
 \alias{HD.ratio}
 
-\title{ Confidence interval methods implemented for continuous data in pairwiseCI }
+\title{Confidence intervals for two sample comparisons of continuous data}
 
 \description{
 Confidence interval methods available for pairwiseCI for comparison of two independent samples. Methods for continuous variables.
@@ -52,57 +52,57 @@ HD.ratio(x, y, conf.level=0.95, alternative="two.sided", ...)
 \details{
 \itemize{
 
-\item \code{Param.diff} calculates the confidence interval for the difference
- in means of two Gaussian samples by calling \code{t.test} in package \pkg{stats},
- assuming homogeneous variances if \code{var.equal=TRUE},
- and heterogeneous variances if \code{var.equal=FALSE} (default);
+\item \kbd{Param.diff} calculates the confidence interval for the difference
+ in means of two Gaussian samples by calling \kbd{t.test} in package \pkg{stats},
+ assuming homogeneous variances if \kbd{var.equal=TRUE},
+ and heterogeneous variances if \kbd{var.equal=FALSE} (default);
 
 
-\item \code{Param.ratio} calculates the Fiellers (1954) confidence interval for the ratio
- of two Gaussian samples by calling \code{ratio.t.test} in package \pkg{mratios},
- assuming homogeneous variances if \code{var.equal=TRUE}.
- If heterogeneous variances are assumed (setting \code{var.equal=FALSE}, the default), the test by Tamhane and Logan (2004) is inverted by solving a quadratic equation according to Fieller,
+\item \kbd{Param.ratio} calculates the Fiellers (1954) confidence interval for the ratio
+ of two Gaussian samples by calling \kbd{ratio.t.test} in package \pkg{mratios},
+ assuming homogeneous variances if \kbd{var.equal=TRUE}.
+ If heterogeneous variances are assumed (setting \kbd{var.equal=FALSE}, the default), the test by Tamhane and Logan (2004) is inverted by solving a quadratic equation according to Fieller,
  where the estimated ratio is simply plugged in order to get Satterthwaite approximated degrees of freedom. See Hasler and Vonk (2006) for some simulation results.
 
 
-\item \code{Lognorm.diff} calculates the confidence interval for the difference
- in means of two Lognormal samples, based on general pivotal quantities (Chen and Zhou, 2005); currently, further arguments \code{(\dots)}
+\item \kbd{Lognorm.diff} calculates the confidence interval for the difference
+ in means of two Lognormal samples, based on general pivotal quantities (Chen and Zhou, 2005); currently, further arguments \kbd{(\dots)}
  are not used; 
 
 
-\item \code{Lognorm.ratio} calculates the confidence interval for the ratio
- in means of two Lognormal samples, based on general pivotal quantities (Chen and Zhou, 2005); currently, further arguments \code{(\dots)}
+\item \kbd{Lognorm.ratio} calculates the confidence interval for the ratio
+ in means of two Lognormal samples, based on general pivotal quantities (Chen and Zhou, 2005); currently, further arguments \kbd{(\dots)}
  are not used; 
 
 
-\item \code{HL.diff} calculates the Hodges-Lehmann confidence interval for the difference of locations
- by calling \code{wilcox.exact} in package \pkg{exactRankTests} ;
+\item \kbd{HL.diff} calculates the Hodges-Lehmann confidence interval for the difference of locations
+ by calling \kbd{wilcox.exact} in package \pkg{exactRankTests} ;
 
 
-\item \code{HL.ratio} calculates the Hodges-Lehmann-like confidence interval for the ratio of locations
- by calling \code{wilcox.exact} in package \pkg{exactRankTests} for the logarithms of observations;
+\item \kbd{HL.ratio} calculates the Hodges-Lehmann-like confidence interval for the ratio of locations
+ by calling \kbd{wilcox.exact} in package \pkg{exactRankTests} for the logarithms of observations;
   
 
-\item \code{HD.diff} calculates a percentile bootstrap confidence interval for the difference
- of \dQuote{Harrell-Davis} estimates for location using code copied from \code{hdquantile} in package \pkg{Hmisc}
- and \code{boot.ci} in \pkg{boot}, the number of bootstrap replications can be set
- via \code{R=999} (default) ;
+\item \kbd{HD.diff} calculates a percentile bootstrap confidence interval for the difference
+ of \dQuote{Harrell-Davis} estimates for location using code copied from \kbd{hdquantile} in package \pkg{Hmisc}
+ and \kbd{boot.ci} in \pkg{boot}, the number of bootstrap replications can be set
+ via \kbd{R=999} (default) ;
 
 
-\item \code{HD.ratio} calculates a percentile bootstrap confidence interval for the ratio
- of \dQuote{Harrell-Davis} estimates for location using code copied from \code{hdquantile} in package \pkg{Hmisc}
- and \code{boot.ci} in package \pkg{boot}, the number of bootstrap replications can be set
- via \code{R=999} (default); 
+\item \kbd{HD.ratio} calculates a percentile bootstrap confidence interval for the ratio
+ of \dQuote{Harrell-Davis} estimates for location using code copied from \kbd{hdquantile} in package \pkg{Hmisc}
+ and \kbd{boot.ci} in package \pkg{boot}, the number of bootstrap replications can be set
+ via \kbd{R=999} (default); 
 
 
-\item \code{Median.diff} calculates a percentile bootstrap confidence interval for the difference
- of Medians using \code{boot.ci} in package \pkg{boot}, the number of bootstrap replications can be set
- via \code{R=999} (default); 
+\item \kbd{Median.diff} calculates a percentile bootstrap confidence interval for the difference
+ of Medians using \kbd{boot.ci} in package \pkg{boot}, the number of bootstrap replications can be set
+ via \kbd{R=999} (default); 
 
 
-\item \code{Median.ratio} calculates a percentile bootstrap confidence interval for the ratio
- of Medians using \code{boot.ci} in package \pkg{boot}, the number of bootstrap replications can be set
- via \code{R=999} (default); 
+\item \kbd{Median.ratio} calculates a percentile bootstrap confidence interval for the ratio
+ of Medians using \kbd{boot.ci} in package \pkg{boot}, the number of bootstrap replications can be set
+ via \kbd{R=999} (default); 
 }
 }
 
@@ -117,7 +117,7 @@ A list containing:
 \references{ 
 \itemize{
 
-\item \code{Param.diff} uses \code{t.test} in \pkg{stats}. 
+\item \kbd{Param.diff} uses \kbd{t.test} in \pkg{stats}. 
 
 \item \bold{ Fieller EC (1954)}: Some problems in interval estimation. 
 Journal of the Royal Statistical Society, Series B, 16, 175-185.
@@ -135,16 +135,16 @@ Statistics in Medicine 25, 4099-4113.
 \url{http://www.imbe.med.uni-erlangen.de/~hothorn/}.
 
 
-\item \code{HD.diff} xxx
+\item \kbd{HD.diff} xxx
 
 
-\item \code{HD.ratio} xxx
+\item \kbd{HD.ratio} xxx
 
 
-\item \code{Median.diff} xxx
+\item \kbd{Median.diff} xxx
 
 
-\item \code{Median.ratio} xxx
+\item \kbd{Median.ratio} xxx
 }
 }
 

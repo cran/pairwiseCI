@@ -9,8 +9,8 @@
 \method{print}{summary.pairwiseCI}(x, \dots)
 }
 \arguments{
-  \item{x}{ an object of class "summary.pairwiseCI", created by the function \code{summary.pairwiseCI} }
-  \item{\dots}{ further arguments to be passed to \code{print} }
+  \item{x}{ an object of class "summary.pairwiseCI", created by the function \code{\link{summary.pairwiseCI}} }
+  \item{\dots}{ further arguments to be passed to \kbd{print} }
 }
 
 

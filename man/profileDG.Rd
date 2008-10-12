@@ -8,16 +8,16 @@
 profileDG(fit, steps = 100, wh = 1:p)
 }
 \arguments{
-  \item{fit}{ an object of class "glm" or "negbin"}
+  \item{fit}{ an object of class \kbd{"glm"} or \kbd{"negbin"}}
   \item{steps}{ a single integer value, the number of steps for the profile }
   \item{wh}{ wh }
 }
 \details{
-  An adaptation of the code in \code{profile.glm}. Will work also for the case that only 0-values occur in one group.
+  An adaptation of the code in \kbd{profile.glm}. Will work also for the case that only 0-values occur in one group.
   For internal use
 }
 \value{
-  An object of class "profile.glm", "profile".
+  An object of class \kbd{"profile.glm"}, \kbd{"profile"}.
 }
 
 \author{ Daniel Gerhard }

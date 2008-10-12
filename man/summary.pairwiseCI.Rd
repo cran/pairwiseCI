@@ -9,7 +9,7 @@
 }
 
 \arguments{
-  \item{object}{ An object of class "pairwiseCI", created using the function \code{\link{pairwiseCI}} }
+  \item{object}{ An object of class \kbd{"pairwiseCI"}, created using the function \code{\link{pairwiseCI}} }
   \item{digits}{ number of digits for rounding of results }
   \item{\dots}{ Currently not used. }
 }

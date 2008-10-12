@@ -31,7 +31,7 @@ if (active)
     varlx <- var(lx)
     mly <- mean(ly)
     varly <- var(ly)
-    estpsi <- mlx + 0.5 * varlx - mly - 0.5 * varlx
+    estpsi <- mlx + 0.5 * varlx - mly - 0.5 * varly
     estimate <- exp(estpsi)
 
     Zx<-rnorm(n=sim, mean=0, sd=1)

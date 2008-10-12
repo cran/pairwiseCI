@@ -6,7 +6,7 @@
 \alias{Prop.ratio}
 \alias{Prop.or}
 
-\title{ Confidence interval methods implemented for proportions in pairwiseCI}
+\title{ Confidence intervals for two sample comparisons of binomial proportions}
 \description{
 For the comparison of two independent samples of binomial observations, confidence intervals for
 the difference (RD), ratio (RR) and odds ratio (OR) of proportions are implemented.
@@ -29,37 +29,37 @@ Prop.or(x, y, conf.level=0.95, alternative="two.sided", CImethod=c("Exact", "Woo
 }
 
 \details{
-Generally, the input are two vectors \code{x} and \code{y} giving the number of successes and failures in the two samples,
- or, alternatively, two \code{data.frame}s \code{x} and \code{y} each containing one column for the successes 
+Generally, the input are two vectors \kbd{x} and \kbd{y} giving the number of successes and failures in the two samples,
+ or, alternatively, two \kbd{data.frame}s \kbd{x} and \kbd{y} each containing one column for the successes 
 and one column for the failures, and the rows containing repeated observations from the same treatment.
-Please note, that except for function \code{prop.or} with \code{CImethod="Quasibinomial"} the confidence intervals available in this function
- are based on sums over the rows of \code{x} and \code{y} and hence do NOT APPROPRIATELY account for extra-binomial variability between repeated observations for the same treatment! 
+Please note, that except for function \kbd{prop.or} with \kbd{CImethod="Quasibinomial"} the confidence intervals available in this function
+ are based on sums over the rows of \kbd{x} and \kbd{y} and hence do NOT APPROPRIATELY account for extra-binomial variability between repeated observations for the same treatment! 
 
 \itemize{
-\item \code{Prop.diff} calculates the asymptotic Continuity Corrected confidence interval for the difference
- of proportions by calling \code{prop.test} in package \pkg{stats}. See \code{?prop.test} for details.
+\item \kbd{Prop.diff} calculates the asymptotic Continuity Corrected confidence interval for the difference
+ of proportions by calling \kbd{prop.test} in package \pkg{stats}. See \kbd{?prop.test} for details.
  NOTE: When there are repeated observations (input as a data.frame with several rows), intervals are calculated based on the sums over the rows!
 
-\item \code{Prop.diff} with \code{CImethod="AC"} Calculates the Agresti-Caffo-Interval (Agresti and Caffo, 2000).
+\item \kbd{Prop.diff} with \kbd{CImethod="AC"} Calculates the Agresti-Caffo-Interval (Agresti and Caffo, 2000).
  NOTE: When there are repeated observations (input as a data.frame with several rows), intervals are calculated based on the sums over the rows!
 
-\item \code{Prop.diff} with \code{CImethod="NHS"} Calculates Newcombes Hybrid Score Interval (Newcombe, 1998).
+\item \kbd{Prop.diff} with \kbd{CImethod="NHS"} Calculates Newcombes Hybrid Score Interval (Newcombe, 1998).
  NOTE: When there are repeated observations (input as a data.frame with several rows), intervals are calculated based on the sums over the rows!
 
-\item \code{Prop.ratio} with \code{CImethod="GNC"} calculates the crude interval for the ratio of proportions 
+\item \kbd{Prop.ratio} with \kbd{CImethod="GNC"} calculates the crude interval for the ratio of proportions 
  according to Gart and Nam (1988), based on normal approximation on the log-scale.
  NOTE: When there are repeated observations (input as a data.frame with several rows), intervals are calculated based on the sums over the rows!
 
-\item \code{Prop.ratio} with \code{CImethod="Score"} calculates the Score interval for the ratio of proportions 
+\item \kbd{Prop.ratio} with \kbd{CImethod="Score"} calculates the Score interval for the ratio of proportions 
  according to Gart and Nam (1988), based on a Chi-Square approximation.
   NOTE: When there are repeated observations (input as a data.frame with several rows), intervals are calculated based on the sums over the rows!
 
-\item \code{Prop.or} with \code{CImethod="Woolf"} calculates the adjusted Woolf confidence interval for
+\item \kbd{Prop.or} with \kbd{CImethod="Woolf"} calculates the adjusted Woolf confidence interval for
  the odds ratio of proportions as, e.g., described in Lawson (2005).
  NOTE: When there are repeated observations (input as a data.frame with several rows), intervals are calculated based on the sums over the rows!
 
-\item \code{Prop.or} with \code{CImethod="Exact"} calculates the exact confidence interval for
- the odds ratio of proportions corresponding to Fishers exact test, by calling to \code{fisher.test} in \pkg{stats}. For details, see \code{?fisher.test}.
+\item \kbd{Prop.or} with \kbd{CImethod="Exact"} calculates the exact confidence interval for
+ the odds ratio of proportions corresponding to Fishers exact test, by calling to \kbd{fisher.test} in \pkg{stats}. For details, see \kbd{?fisher.test}.
  NOTE: When there are repeated observations (input as a data.frame with several rows), intervals are calculated based on the sums over the rows!
 
 

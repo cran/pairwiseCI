@@ -4,7 +4,7 @@
 \docType{package}
 
 \title{
-Wrapper function for two-sample confidence intervals and tests.
+Wrapper functions for two-sample confidence intervals and tests.
 }
 
 \description{
@@ -28,8 +28,7 @@ Maintainer: Frank Schaarschmidt <schaarschmidt@biostat.uni-hannover.de>
 \keyword{ package }
 
 \seealso{
-Multiple comparisons for the differences of means:
-\code{\link[<multcomp>:<multcomp>-package]{<multcomp>}}
+Multiple comparisons for the differences of means:\pkg{multcomp}
 
 \code{pairwise.t.test(stats)}
 \code{pairwise.prop.test(stats)}

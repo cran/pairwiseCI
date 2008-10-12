@@ -1,7 +1,7 @@
 \name{dieldrin}
 \alias{dieldrin}
 \docType{data}
-\title{ Dieldrin in fish of two different rivers}
+\title{Dieldrin in fish from two different rivers}
 \description{
   Observations below a detection limit: the dieldrin concentration (microg/kg) in roach fish (Rutilus rutilus) were measured in the Thames river near Oxford, UK
  and as a control in an upper arm, the river Ray.

@@ -1,7 +1,7 @@
 \name{behenic}
 \alias{behenic}
 \docType{data}
-\title{ Measurements of behenic acid}
+\title{Measurements of behenic acid in two samples}
 \description{
   Observations below a detection limit: in field trials with transgenic and isogenic corn
  varieties the behenic acid content was measured. Objective is to prove equivalence.
@@ -16,7 +16,7 @@
 }
 
 \source{
-  Oberdoerfer, R.B. Example dataset from composition analyses of genetically modified oilseed rape seeds. 2003; BCS GmbH.
+  \emph{Oberdoerfer, R.B.} Example dataset from composition analyses of genetically modified oilseed rape seeds. 2003; BCS GmbH.
 }
 
 \examples{

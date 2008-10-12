@@ -9,8 +9,8 @@
 \method{print}{summary.pairwiseTest}(x, \dots)
 }
 \arguments{
-  \item{x}{ an object of class "summary.pairwiseTest", created by the function \code{summary.pairwiseTest} }
-  \item{\dots}{ further arguments to be passed to \code{print} }
+  \item{x}{ an object of class "summary.pairwiseTest", created by the function \code{\link{summary.pairwiseTest}} }
+  \item{\dots}{ further arguments to be passed to \kbd{print} }
 }
 
 

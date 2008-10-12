@@ -1,7 +1,7 @@
 \name{repellent}
 \alias{repellent}
 \docType{data}
-\title{ Repellent effect of sulphur in sugar solutions }
+\title{ Repellent effect of sulphur in eight concentrations}
 \description{ Sugar solutions were presented to certain number of bees. To assess the repellent effect
 of the fungicide sulphur of bees, increasing concentration of sulphur was added to the sugar solutions.
 The decrease of sugar solutions (i.e. uptake by bees) was measured. Low values of decrease therefore can
