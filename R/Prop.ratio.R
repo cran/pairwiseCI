@@ -1,5 +1,5 @@
 "Prop.ratio" <-
-function(x, y, conf.level=0.95, alternative="two.sided", CImethod=c("GNC", "Score"))
+function(x, y, conf.level=0.95, alternative="two.sided", CImethod=c("Score","GNC"))
 {
 
 CImethod<-match.arg(CImethod)
@@ -81,8 +81,9 @@ METHOD<-"Gart-Nam Score interval"
 
    n1<-sum(colsx)
    n0<-sum(colsy)
-   x1<-x1I<-colsx[1]
-   x0<-x0I<-colsy[1]
+   x1<-x1I<-as.numeric(colsx[1])
+   x0<-x0I<-as.numeric(colsy[1])
+
   }
   else
    {
@@ -96,10 +97,6 @@ METHOD<-"Gart-Nam Score interval"
    else{stop("Prop.ratio needs two data.frames or two numeric vectors of length 2 as input")}
    }
 
-x0<-x0I<-y[1]
-x1<-x1I<-x[1]
-n0<-sum(y)
-n1<-sum(x)
 
 if(x0==0 & x1==0)
 {

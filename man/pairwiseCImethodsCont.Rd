@@ -84,13 +84,13 @@ HD.ratio(x, y, conf.level=0.95, alternative="two.sided", ...)
   
 
 \item \code{HD.diff} calculates a percentile bootstrap confidence interval for the difference
- of \dQuote{Harrell-Davis} estimates for location using \code{hdquantile} in package \pkg{Hmisc}
+ of \dQuote{Harrell-Davis} estimates for location using code copied from \code{hdquantile} in package \pkg{Hmisc}
  and \code{boot.ci} in \pkg{boot}, the number of bootstrap replications can be set
  via \code{R=999} (default) ;
 
 
 \item \code{HD.ratio} calculates a percentile bootstrap confidence interval for the ratio
- of \dQuote{Harrell-Davis} estimates for location using \code{hdquantile} in package \pkg{Hmisc}
+ of \dQuote{Harrell-Davis} estimates for location using code copied from \code{hdquantile} in package \pkg{Hmisc}
  and \code{boot.ci} in package \pkg{boot}, the number of bootstrap replications can be set
  via \code{R=999} (default); 
 

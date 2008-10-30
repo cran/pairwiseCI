@@ -38,7 +38,7 @@ Negbin.ratio(x, y, conf.level=0.95, alternative="two.sided")
 
 \item \code{Quasipoisson.ratio} calculates a confidence interval for the ratio of
  means of the response by fitting a generalized linear model with family \code{quasipoisson} and log-link using \code{glm} in package \pkg{stats},
- constructing a likelihood profile and deriving a equal-tailed confidence interval from this profile.
+ constructing a deviance profile and deriving a equal-tailed confidence interval from this profile.
 
 
 \item \code{Negbin.ratio} calculates a confidence interval for the ratio of
@@ -49,6 +49,8 @@ Negbin.ratio(x, y, conf.level=0.95, alternative="two.sided")
 
 Note, that for all the methods, a separate glm is fitted for each two-sample comparison! When a common model can be reasonbly assumed for all the data, there are smarter methods of constructing confidence
 intervals for groupwise comparisons, based on a common model, see e.g. the function \code{confint} in package \pkg{stats}, the function \code{confint.glm} in package \pkg{MASS} and the function \code{confint.glht} in package \pkg{multcomp}.
+
+Note, that the code used here is slightly changed from the original code by Venables and Ripley, or Bates and Watts. An limit is imposed on the parameter space in which the profile is constructed. By that limitation, intervals can also be constructed for extreme cases with all observations in one group being zero.
 
 Note, that the \code{Poisson.ratio} can be used when only one count is present in each group. For \code{Quasipoisson.ratio}, \code{Negbin.ratio}, repeated observations are necessary in each group.
 
@@ -67,7 +69,7 @@ A list containing:
 \references{ 
 
 \bold{Venables WN and Ripley BD (2002).} Modern Applied Statistics using S, Fourth Edition. Springer New York.
-
+\bold{Bates, D.M. and Watts, D.G.(1988).} Nonlinear Regression Analysis and Its Applications. John Wiley and Sons, New York.
 }
 
 
@@ -77,7 +79,9 @@ library(mratios)
 
 data(Mutagenicity)
 
-QPCI<-pairwiseCI(MN ~ Treatment, data=Mutagenicity, alternative="greater", control="Vehicle", method="Quasipoisson.ratio")
+QPCI<-pairwiseCI(MN ~ Treatment, data=Mutagenicity,
+ alternative="greater", control="Vehicle", method="Quasipoisson.ratio")
+
 plot(QPCI)
 
  }

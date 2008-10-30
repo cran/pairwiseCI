@@ -1,11 +1,11 @@
 Package: pairwiseCI
 Type: Package
 Title: Confidence intervals for two sample comparisons
-Version: 0.1-13
-Date: 2008-05-16
-Author: Frank Schaarschmidt
+Version: 0.1-15
+Date: 2008-10-30
+Author: Frank Schaarschmidt, Daniel Gerhard
 Maintainer: Frank Schaarschmidt <schaarschmidt@biostat.uni-hannover.de>
-Depends: R (>= 2.2.0), stats, exactRankTests, Hmisc, boot, mratios, binMto, MASS, MCPAN
+Depends: R (>= 2.2.0), stats, exactRankTests, boot, mratios, binMto, MASS, MCPAN
 Description: Calculation of the parametric, nonparametric confidence intervals
  for the difference or ratio of location parameters and for the difference, ratio 
  and odds-ratio of binomial proportions for comparison of independent samples.
@@ -14,4 +14,4 @@ Description: Calculation of the parametric, nonparametric confidence intervals
  linear model can be reasonably assumed, there are smarter methods for CI calculation
  available than are implemented in this package!
 License: GPL
-Packaged: Mon Jun  9 11:04:30 2008; manager
+Packaged: Fri Oct 31 14:23:32 2008; manager

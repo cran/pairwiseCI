@@ -45,9 +45,12 @@ pairwiseCI(formula, data, by = NULL,
     \item "Median.diff": Nonparametric CI for difference of locations, based on the medians (percentile bootstrap, stratified by the grouping variable),
     \item "Median.ratio": Nonparametric CI for ratio of locations, based on the medians (percentile bootstrap, stratified by the grouping variable),
     \item "Prop.diff": Asymptotic continuity corrected CI for difference of proportions as implemented in \code{prop.test (stats)},
+    \item "Negbin.ratio": Profile-likelihood CI for ratio of expected values assuming the negative binomial distribution, adapting code from the profile function of MASS (Venables and Ripley,2002),
+    \item "Quasipoisson.ratio": Profile-deviance CI for the ratio of expected values with a quasipoisson assumption, using the adapted code of the profile function in MASS 
+    \item "Poisson.ratio": Profile-likelihood CI for the ratio of expected values with a Poisson assumption, again using slightly changed code from MAss,
     \item "Prop.diffAdd2": Approximate CI for difference of proportions according to Agresti and Caffo (2000),
-    \item "Prop.ratio": Asymptotic CI (normal approximation on the log: "GNC") or iterative CI ("Score") for ratio of proportions,
-    \item "Prop.or": Asymptotic CI for the odds ratio,
+    \item "Prop.ratio": Asymptotic CI (normal approximation on the log: \code{CImethod="GNC"}) or iterative CI (\code{CImethod="Score"}) for ratio of proportions,
+    \item "Prop.or": Asymptotic CI for the odds ratio (normal approximation on the log: \code{CImethod="Woolf"}), or the exact CI corresponding to Fishers exact test (\code{CImethod="Exact"}, taken from \code{fisher.test}, package \code{stats})
     }
   See \code{?pairwiseCImethods} for details.
   }
@@ -108,17 +111,24 @@ For the Harrell-Davis estimator see: \bold{Harrell, F.E.; Davis, C.E. (1982):} A
 
 Note, that the 4 bootstrap versions will hardly make sense for small samples, because of the discreteness of the resulting bootstrap sample.
 
+\item \code{Poisson.ratio}: Profile-likelihood CI, based on the assumption of a Poisson distribution, basic method described in \bold{Venables, W.N., Ripley, B.D. (2002):} Modern Applied Statistics with S. Springer Verlag, New York.
+
+\item \code{Quasipoisson.ratio}: Profile-deviance CI, based on the quasipoisson assumption, basic method  described in Venables, \bold{W.N., Ripley, B.D. (2002):} Modern Applied Statistics with S. Springer Verlag, New York.
+
+\item \code{Negbin.ratio}: Profile-likelihood CI, based on the assumption of the negative binomial distribution, basic method  described in \bold{Venables, W.N., Ripley, B.D. (2002):} Modern Applied Statistics with S. Springer Verlag, New York.
+
 \item \code{Prop.diff}: simply uses \code{prop.test} in \pkg{stats} which currently implements the continuity corrected interval as described under the acronym CC in
 \bold{Newcombe R.G. (1998):} Interval Estimation for the Difference Between Independent Proportions: Comparison of Eleven Methods. Statistics in Medicine 17, 873-890. 
 
 \item \code{Prop.diffAdd2}: calls to \code{Add4} in \pkg{binMto} which implements the interval adding 2 successes and 2 failures as proposed by:
 \bold{Agresti, A. and Caffo, B. (2000):} Simple and effective confidence intervals for proportions and differences of proportions result from adding two successes and two failures. American Statistician 54 (4), 280-288.
 
-\item \code{Prop.ratio} calculates the crude asymptotic interval (normal approximation on the log-scale) as described in:
+\item \code{Prop.ratio} calculates the crude asymptotic interval (normal approximation on the log-scale, \code{CImethod="GNC"}) or the Score interval (\code{CImethod="Score"}), both described in:
 \bold{Gart, JJ and Nam, J (1988)}: Approximate interval estimation of the ratio of binomial parameters: A review and corrections for skewness.
  Biometrics 44, 323-338. 
 
-\item \code{Prop.or} Adjusted Woolf interval, e.g. in: \bold{Lawson, R (2005):} Small sample confidence intervals for the odds ratio. Communication in Statistics Simulation and Computation, 33, 1095-1113.
+\item \code{Prop.or} Adjusted Woolf interval (\code{CImethod="Woolf"}), e.g. in: \bold{Lawson, R (2005):} Small sample confidence intervals for the odds ratio. Communication in Statistics Simulation and Computation, 33, 1095-1113.
+ or the exact interval corresponding to Fishers exact test (\code{CImethod="Exact"}, taken from \code{fisher.test(stats)}, see references there)
  }
 }
 

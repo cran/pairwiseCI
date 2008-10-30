@@ -4,7 +4,6 @@ Median.ratio<-function(x, y, conf.level=0.95, alternative="two.sided", ...)
 {
 
 require(boot)
-require(Hmisc)
 
 x<-as.numeric(x)
 y<-as.numeric(y)
@@ -45,8 +44,6 @@ bootargs$strata<-data[,2]
 
 boot.out<-do.call("boot", bootargs)   
 
- 
-# boot.out <- boot(data, HD50ratio, R=999, stype="i")
 conf.int <- boot.ci(boot.out=boot.out, conf = conf.levelI,type =c("perc"))$perc[4:5]
 
 if(alternative=="less")

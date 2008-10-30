@@ -22,6 +22,5 @@ Originally a split plot design, here simply for demonstration of pairwiseCI.
 \examples{
 data(Oats)
 boxplot(yield ~ nitro*Variety, data=Oats)
-anova(lm(yield ~ Block + nitro*Variety, data=Oats))
 }
 \keyword{datasets}

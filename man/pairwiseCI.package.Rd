@@ -21,7 +21,7 @@ are implemented in a unified user level function.
 
 
 \author{
-Frank Schaarschmidt
+Frank Schaarschmidt and Daniel Gerhard, for the Institute of Biostatistics, Leibniz Universitaet Hannover
 Maintainer: Frank Schaarschmidt <schaarschmidt@biostat.uni-hannover.de>
 }
 

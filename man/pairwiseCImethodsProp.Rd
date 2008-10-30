@@ -13,9 +13,9 @@ the difference (RD), ratio (RR) and odds ratio (OR) of proportions are implement
 }
 \usage{
 
-Prop.diff(x, y, conf.level=0.95, alternative="two.sided", CImethod=c("CC", "AC","NHS"), ...)
-Prop.ratio(x, y, conf.level=0.95, alternative="two.sided", CImethod=c("GNC", "Score"))
-Prop.or(x, y, conf.level=0.95, alternative="two.sided", CImethod=c("Woolf", "Exact"), ...)
+Prop.diff(x, y, conf.level=0.95, alternative="two.sided", CImethod=c("NHS", "CC", "AC"), ...)
+Prop.ratio(x, y, conf.level=0.95, alternative="two.sided", CImethod=c("Score", "GNC"))
+Prop.or(x, y, conf.level=0.95, alternative="two.sided", CImethod=c("Exact", "Woolf"), ...)
 
 }
 
@@ -33,7 +33,7 @@ Generally, the input are two vectors \code{x} and \code{y} giving the number of 
  or, alternatively, two \code{data.frame}s \code{x} and \code{y} each containing one column for the successes 
 and one column for the failures, and the rows containing repeated observations from the same treatment.
 Please note, that except for function \code{prop.or} with \code{CImethod="Quasibinomial"} the confidence intervals available in this function
- are based on sums over the rows of \code{x} and \code{y} and hence do NOT APPROPRIATELY account for extra.binomial variability between repeated observations for the same treatment! 
+ are based on sums over the rows of \code{x} and \code{y} and hence do NOT APPROPRIATELY account for extra-binomial variability between repeated observations for the same treatment! 
 
 \itemize{
 \item \code{Prop.diff} calculates the asymptotic Continuity Corrected confidence interval for the difference

@@ -1,6 +1,6 @@
 "Prop.diff" <-
 
-function(x, y, conf.level=0.95, alternative="two.sided", CImethod=c("CC","AC","NHS"), ...)
+function(x, y, conf.level=0.95, alternative="two.sided", CImethod=c("NHS","CC","AC"), ...)
 {
  args<-list(...)
 

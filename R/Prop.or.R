@@ -1,5 +1,5 @@
 "Prop.or" <- 
-function(x, y, conf.level=0.95, alternative="two.sided", CImethod=c("Woolf", "Exact"), ...)
+function(x, y, conf.level=0.95, alternative="two.sided", CImethod=c("Exact","Woolf"), ...)
 {
 
 CImethod<-match.arg(CImethod)

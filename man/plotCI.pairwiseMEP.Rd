@@ -33,7 +33,7 @@ dat<-data.frame(x1=x1,x2=x2,x3=x3,x4=x4,A=A, B=B)
 
 test<-pairwiseMEP(x=dat, ep=c("x1","x2","x3", "x4"), f="A", by="B")
 
-plotCI(test, whichep=c("x1","x2"), lines=c(0.5,2))
+plotCI(test, whichep=c("x1","x2"), lines=c(-5,5))
 
 plotCI(test, whichep=c(3,4))
 
