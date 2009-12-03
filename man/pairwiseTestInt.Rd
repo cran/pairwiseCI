@@ -15,8 +15,8 @@ Two different functions for data representable as a two numeric vectors (pairwis
   }
 \usage{
 
-pairwiseTestCont(formula, data, alternative="two.sided", control=NULL, method, ...)
-pairwiseTestProp(formula, data, alternative="two.sided", control=NULL, method, ...)
+pairwiseTestCont(formula, data, control=NULL, method, ...)
+pairwiseTestProp(formula, data, control=NULL, method, ...)
 
 }
 \arguments{
@@ -24,8 +24,6 @@ pairwiseTestProp(formula, data, alternative="two.sided", control=NULL, method, .
  
  \item{data}{ a data frame, containing the variables specified in \kbd{formula} }
 
-  \item{alternative}{ character string, defining whether the direction of the alternative hypothesis,
- passed to the function defined in \kbd{method} }
   \item{method}{ character string, giving the name of the function, which shall be used to calculate local p-values. Any function,
  taking two vectors x, and y as first arguments and returning a list with the p.value in a list element named \kbd{p.value} can be specified.}
   \item{control}{ optional character string, defining the name of a control group.

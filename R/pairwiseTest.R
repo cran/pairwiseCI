@@ -1,11 +1,10 @@
 "pairwiseTest" <-
-function(formula, data, by=NULL,
- alternative="two.sided", method="t.test",
+function(formula, data, by=NULL, method="t.test",
  control=NULL, ...)
 
 {
 
-alternative<-match.arg(alternative, choices=c("two.sided", "less", "greater"))
+#alternative<-match.arg(alternative, choices=c("two.sided", "less", "greater"))
 
 # # # check the arguments
 
@@ -36,7 +35,7 @@ if( "Prop.test"==method )
 
 args<-list(...)
 args$formula <- formula
-args$alternative <- alternative
+#args$alternative <- alternative
 args$method <- method
 args$control <- control
 
@@ -51,7 +50,7 @@ out<-do.call(PWTINT,args)
 output <- list(
  byout=list(out),
  bynames="",
- alternative=alternative,
+# alternative=alternative,
  method=method,
  list(...) )
 }
@@ -92,7 +91,7 @@ if(!is.null(by))
  output <- list(
  byout=byout,
  bynames=bynames,
- alternative=alternative,
+# alternative=alternative,
  method=method,
  control=control,
  by=by,

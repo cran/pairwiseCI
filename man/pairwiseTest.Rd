@@ -9,8 +9,7 @@
   }
 \usage{
 pairwiseTest(formula, data, by = NULL,
- alternative = "two.sided", method = "t.test",
- control = NULL, ...)
+ method = "t.test", control = NULL, ...)
 
 }
 \arguments{
@@ -18,8 +17,6 @@ pairwiseTest(formula, data, by = NULL,
   \item{data}{ a data frame, containing the variables specified in \kbd{formula} }
   \item{by}{ optional vector of character strings, defining factors by which to split the data set.
  Then, pairwise comparisons are performed separately for each level of the specified factors.}
-  \item{alternative}{ character string, defining whether the direction of the alternative hypothesis,
- passed to the function defined in \kbd{method} }
   \item{method}{ character string, giving the name of the function, which shall be used to calculate local p-values. Any function,
  taking two vectors x, and y as first arguments and returning a list with the p.value in a list element named \kbd{p.value} can be specified.}
   \item{control}{ optional character string, defining the name of a control group.
@@ -43,7 +40,6 @@ and returns a list containing a list containing the appropriate p-value in the e
   \item{byout}{a list, containing the output of pairwiseTestint for each level of by,
  i.e. a data.frame containing with columns \kbd{p.value},\kbd{compnames} \kbd{groupx}, \kbd{groupy}}
   \item{bynames}{a character vector containing the names of the levels of the factors specified in \kbd{by} }
-  \item{alternative}{a character string}
   \item{method}{a character string, name of the function used}
   \item{control}{a character string}
   \item{by}{vector of character strings, same as  argument \kbd{by}}

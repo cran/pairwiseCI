@@ -1,12 +1,10 @@
 
 "pairwiseTestCont" <-
-function(formula, data, alternative="two.sided",
+function(formula, data,
  control=NULL, method, ...)
 
 {
 arglist<-list(...)
-
-arglist$alternative <- alternative
 
 
 # # # check the arguments

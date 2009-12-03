@@ -1,7 +1,7 @@
 \name{as.data.frame.pairwiseCI}
 \alias{as.data.frame.pairwiseCI}
 
-\title{Coercing "pairwiseCI" to a "data.frame"}
+\title{Coercing pairwiseCI objects to data.frames}
 \description{
  Creates a data.frame from the output of pairwiseCI.
 }
@@ -10,7 +10,7 @@
 }
 
 \arguments{
-  \item{x}{ an object of class "pairwiseCI" }
+  \item{x}{ an object of class \dQuote{pairwiseCI} }
   \item{\dots}{ currently not used }
 }
 
@@ -24,8 +24,7 @@
 and if the argument by has been specified, 
   \item{by }{containing the levels by which the original data set has been split}
 
-and the conf.level and the a character string naming the used method as attributes
-"conf.level" and "methodname".
+and the conf.level and a character string naming the used method.
 
 }
 

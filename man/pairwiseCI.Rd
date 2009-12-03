@@ -43,11 +43,10 @@ pairwiseCI(formula, data, by = NULL,
     \kbd{"HD.ratio"}: Nonparametric CI for ratio of locations, based on the Harrell-Davis estimator (percentile bootstrap, stratified by the grouping variable),
     \kbd{"Median.diff"}: Nonparametric CI for difference of locations, based on the medians (percentile bootstrap, stratified by the grouping variable),
     \kbd{"Median.ratio"}: Nonparametric CI for ratio of locations, based on the medians (percentile bootstrap, stratified by the grouping variable),
-    \kbd{"Prop.diff"}: Asymptotic continuity corrected CI for difference of proportions as implemented in \kbd{prop.test(stats)},
     \kbd{"Negbin.ratio"}: Profile-likelihood CI for ratio of expected values assuming the negative binomial distribution, adapting code from the profile function of MASS (Venables and Ripley,2002),
     \kbd{"Quasipoisson.ratio"}: Profile-deviance CI for the ratio of expected values with a quasipoisson assumption, using the adapted code of the profile function in MASS 
-    \kbd{"Poisson.ratio"}: Profile-likelihood CI for the ratio of expected values with a Poisson assumption, again using slightly changed code from MAss,
-    \kbd{"Prop.diffAdd2"}: Approximate CI for difference of proportions according to Agresti and Caffo (2000),
+    \kbd{"Poisson.ratio"}: Profile-likelihood CI for the ratio of expected values with a Poisson assumption, again using slightly changed code from MASS,
+    \kbd{"Prop.diff"}: Asymptotic continuity corrected CI for difference of proportions as implemented in \kbd{prop.test(stats)},
     \kbd{"Prop.ratio"}: Asymptotic CI (normal approximation on the log: \kbd{CImethod="GNC"}) or iterative CI (\kbd{CImethod="Score"}) for ratio of proportions,
     \kbd{"Prop.or"}: Asymptotic CI for the odds ratio (normal approximation on the log: \kbd{CImethod="Woolf"}), or the exact CI corresponding to Fishers exact test (\kbd{CImethod="Exact"}, taken from \kbd{fisher.test}, package \kbd{stats})
   See \kbd{?pairwiseCImethods} for details.
@@ -55,7 +54,8 @@ pairwiseCI(formula, data, by = NULL,
 
  \item{control}{ Character string, specifying one of the levels of the treatment variable as 
    control group in the comparisons; default is NULL, then CI for all pairwise comparisons are calculated. }
- \item{\dots}{further arguments to be passed to the functions specified in \code{\link{pairwiseCImethodsCont}}, and \code{\link{pairwiseCImethodsProp}}}
+ \item{\dots}{further arguments to be passed to the functions specified in \code{\link{pairwiseCImethodsCont}}, \code{\link{pairwiseCImethodsCount}} and \code{\link{pairwiseCImethodsProp}}. 
+  In particular, different methods to calculate confidence intervals can be specified via the argument \kbd{CImethod} for the comparison of binomial proportions, see details in \code{\link{pairwiseCImethodsProp}}. }
 }
 \details{
  Note that all the computed intervals are without adjustment for multiplicity by default. 
@@ -117,9 +117,6 @@ Note, that the 4 bootstrap versions will hardly make sense for small samples, be
 
 \item \kbd{Prop.diff}: simply uses \kbd{prop.test} in \pkg{stats} which currently implements the continuity corrected interval as described under the acronym CC in
 \bold{Newcombe R.G. (1998):} Interval Estimation for the Difference Between Independent Proportions: Comparison of Eleven Methods. Statistics in Medicine 17, 873-890. 
-
-\item \kbd{Prop.diffAdd2}: calls to \kbd{Add4} in \pkg{binMto} which implements the interval adding 2 successes and 2 failures as proposed by:
-\bold{Agresti, A. and Caffo, B. (2000):} Simple and effective confidence intervals for proportions and differences of proportions result from adding two successes and two failures. American Statistician 54 (4), 280-288.
 
 \item \kbd{Prop.ratio} calculates the crude asymptotic interval (normal approximation on the log-scale, \kbd{CImethod="GNC"}) or the Score interval (\kbd{CImethod="Score"}), both described in:
 \bold{Gart, JJ and Nam, J (1988)}: Approximate interval estimation of the ratio of binomial parameters: A review and corrections for skewness.

@@ -1,21 +1,22 @@
 \name{as.data.frame.pairwiseMEP}
 \alias{as.data.frame.pairwiseMEP}
 
-\title{Coerce "pairwiseMEP" to "data.frame"}
+\title{Coerce pairwiseMEP objects to data.frames}
 \description{
  Coerces the output of the function pairwiseMEP to a data.frame. 
 }
 \usage{
-\method{as.data.frame}{pairwiseMEP}(x, row.names = NULL, optional = FALSE, whichep = NULL, ...)
+\method{as.data.frame}{pairwiseMEP}(x, row.names = NULL,
+ optional = FALSE, whichep = NULL, ...)
 }
 
 \arguments{
-  \item{x}{an object of class 'pairwiseMEP' as can be obtained by calling \code{\link{pairwiseMEP}} }
-  \item{row.names}{as in \kbd{as.data.frame}}
-  \item{optional}{as in \kbd{as.data.frame}}
+  \item{x}{an object of class \dQuote{pairwiseMEP} as can be obtained by calling \code{\link{pairwiseMEP}} }
+  \item{row.names}{as in \code{as.data.frame}}
+  \item{optional}{as in \code{as.data.frame}}
   \item{whichep}{ a vector of integers or character strings, indexing which endpoints (which response variables)
-from the \kbd{x} shall be coerced to a data.frame; if omitted (default), all endpoints are coerced to a data.frame }
-  \item{\dots}{ Further arguments to be passed to \kbd{as.data.frame} }
+from object \code{x} shall be coerced to a data.frame; if omitted (default), all endpoints are coerced to a data.frame }
+  \item{\dots}{ Further arguments to be passed to \code{as.data.frame} }
 }
 
 \value{

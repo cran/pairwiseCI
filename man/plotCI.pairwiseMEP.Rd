@@ -26,15 +26,17 @@ A plot.
 x1<-rnorm(120,20,2)
 x2<-rnorm(120,100,8)
 x3<-rpois(120,10)
-x4<-rnbinom(120,mu=10, size=10)
+x4<-rpois(120,50)
 A<-rep(c("a1","a2","a3"), c(40,40,40))
 B<-rep(rep(c("b1","b2","b3","b4"), c(10,10,10,10)), times=3)
 dat<-data.frame(x1=x1,x2=x2,x3=x3,x4=x4,A=A, B=B)
 
 
-test<-pairwiseMEP(x=dat, ep=c("x1","x2","x3", "x4"), f="A", by="B")
+test<-pairwiseMEP(x=dat, ep=c("x1","x2","x3", "x4"),
+ f="A", by="B", conf.level=0.9, control="a1",
+ method=c("Param.ratio","Param.ratio","Poisson.ratio","Poisson.ratio"))
 
-plotCI(test, whichep=c("x1","x2"), lines=c(-5,5))
+plotCI(test, whichep=c("x1","x2"), lines=c(0.8,1.25))
 
 plotCI(test, whichep=c(3,4))
 

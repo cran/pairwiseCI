@@ -59,11 +59,13 @@ A<-rep(c("a1","a2","a3"), c(40,40,40))
 B<-rep(rep(c("b1","b2","b3","b4"), c(10,10,10,10)), times=3)
 dat<-data.frame(x1=x1,x2=x2,x3=x3,x4=x4,A=A, B=B)
 
-test<-pairwiseMEP(x=dat, ep=c("x1","x2","x3", "x4"), f="A", by="B")
+test<-pairwiseMEP(x=dat, ep=c("x1","x2","x3", "x4"), control="a1",
+ f="A", by="B", method=c("Param.ratio","Param.ratio","Negbin.ratio","Negbin.ratio"))
 test
 
-plotCI(test)
+plotCI(test, whichep=c("x1","x2"))
 
+plotCI(test, whichep=c("x3","x4"))
 }
 
 \keyword{ htest }
