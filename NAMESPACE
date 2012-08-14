@@ -1,0 +1,27 @@
+export(
+Param.diff, Param.ratio, HL.diff, HL.ratio, Lognorm.diff, Lognorm.ratio, Median.diff, Median.ratio, np.re, Prop.diff, Prop.ratio, Prop.or, Prop.test,
+Poisson.ratio, Quasipoisson.ratio, Negbin.ratio,
+pairwiseCI, pairwiseTest, pairwiseMEP, pairwiseMEP.data.frame,
+plotCI.pairwiseMEP
+)
+
+import(
+  stats,
+  exactRankTests,
+  boot,
+  mratios,
+  binMto,
+  MASS,
+  MCPAN
+)
+
+S3method(plot, pairwiseCI)
+S3method(print, pairwiseCI)
+S3method(summary, pairwiseCI)
+S3method(as.data.frame, pairwiseCI)
+
+S3method(print, pairwiseTest)
+S3method(summary, pairwiseTest)
+
+S3method(as.data.frame, pairwiseMEP)
+S3method(plotCI, pairwiseMEP)

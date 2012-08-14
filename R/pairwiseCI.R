@@ -7,7 +7,7 @@ alternative="two.sided", conf.level=0.95,
 
 # # # # #
 
-method<-match.arg(method, choices=c("Param.diff", "Param.ratio", "Lognorm.diff", "Lognorm.ratio","HL.diff", "HL.ratio", "HD.diff", "HD.ratio", "Median.diff" ,"Median.ratio", "Prop.diff", "Prop.ratio", "Prop.or", "Negbin.ratio", "Poisson.ratio", "Quasipoisson.ratio"))
+method<-match.arg(method, choices=c("Param.diff", "Param.ratio", "Lognorm.diff", "Lognorm.ratio","HL.diff", "HL.ratio", "Median.diff" ,"Median.ratio", "Prop.diff", "Prop.ratio", "Prop.or", "Negbin.ratio", "Poisson.ratio", "Quasipoisson.ratio", "np.re"))
 
 
 alternative<-match.arg(alternative, choices=c("two.sided", "less", "greater"))
@@ -47,7 +47,7 @@ if(method %in% c("Prop.diff", "Prop.ratio", "Prop.or"))
  
  }
 
-if(method %in% c("Param.diff","Param.ratio","Lognorm.diff","Lognorm.ratio", "HL.diff","HL.ratio","HD.diff", "HD.ratio", "Median.diff","Median.ratio","Negbin.ratio", "Poisson.ratio", "Quasipoisson.ratio"))
+if(method %in% c("Param.diff","Param.ratio","Lognorm.diff","Lognorm.ratio", "HL.diff","HL.ratio", "Median.diff","Median.ratio","Negbin.ratio", "Poisson.ratio", "Quasipoisson.ratio", "np.re"))
  {
  if(class(formula[[2]])[1]!="name")
   {stop("For the specified method, please specify formula with structure: response ~ treatment")}

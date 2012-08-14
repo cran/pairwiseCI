@@ -37,20 +37,19 @@ pairwiseCI(formula, data, by = NULL,
     \kbd{"Param.ratio"}: Ratio of two means, with additional argument \kbd{var.equal=FALSE}(default) as in \kbd{t.test.ratio(mratios)},
     \kbd{"Lognorm.diff"}: Difference of two means, assuming a lognormal distribution, based on generalized pivotal quantities,
     \kbd{"Lognorm.ratio"}: Ratio of two means, assuming a lognormal distribution, based on generalized pivotal quantities,
+    \kbd{"np.re"}: nonparametric confidence interval for relative effects suitable for the Behrens Fisher problem,
     \kbd{"HL.diff"}: Exact conditional nonparametric CI for difference of locations based on the Hodges-Lehmann estimator,
     \kbd{"HL.ratio"}: Exact conditional nonparametric CI for ratio of locations, based on the Hodges-Lehmann estimator,
-    \kbd{"HD.diff"}: Nonparametric CI for difference of locations, based on the Harrell-Davis estimator (percentile bootstrap, stratified by the grouping variable),
-    \kbd{"HD.ratio"}: Nonparametric CI for ratio of locations, based on the Harrell-Davis estimator (percentile bootstrap, stratified by the grouping variable),
     \kbd{"Median.diff"}: Nonparametric CI for difference of locations, based on the medians (percentile bootstrap, stratified by the grouping variable),
     \kbd{"Median.ratio"}: Nonparametric CI for ratio of locations, based on the medians (percentile bootstrap, stratified by the grouping variable),
     \kbd{"Negbin.ratio"}: Profile-likelihood CI for ratio of expected values assuming the negative binomial distribution, adapting code from the profile function of MASS (Venables and Ripley,2002),
     \kbd{"Quasipoisson.ratio"}: Profile-deviance CI for the ratio of expected values with a quasipoisson assumption, using the adapted code of the profile function in MASS 
     \kbd{"Poisson.ratio"}: Profile-likelihood CI for the ratio of expected values with a Poisson assumption, again using slightly changed code from MASS,
-    \kbd{"Prop.diff"}: Asymptotic continuity corrected CI for difference of proportions as implemented in \kbd{prop.test(stats)},
+    \kbd{"Prop.diff"}: Asymptotic CI for the difference of proportions with the following options: \kbd{CImethod="NHS"} Newcombes Hybrid Score interval (Newcombe, 1998), \kbd{CImethod="CC"} continuity corrected interval (Newcombe, 1998) as implemented in \kbd{prop.test(stats)},  \kbd{CImethod="AC"} Agresti-Caffo interval (Agresti and Caffo, 2000)
     \kbd{"Prop.ratio"}: Asymptotic CI (normal approximation on the log: \kbd{CImethod="GNC"}) or iterative CI (\kbd{CImethod="Score"}) for ratio of proportions,
     \kbd{"Prop.or"}: Asymptotic CI for the odds ratio (normal approximation on the log: \kbd{CImethod="Woolf"}), or the exact CI corresponding to Fishers exact test (\kbd{CImethod="Exact"}, taken from \kbd{fisher.test}, package \kbd{stats})
   See \kbd{?pairwiseCImethods} for details.
-  }
+  }                                                 
 
  \item{control}{ Character string, specifying one of the levels of the treatment variable as 
    control group in the comparisons; default is NULL, then CI for all pairwise comparisons are calculated. }
@@ -92,16 +91,14 @@ the object is printed by \code{\link{print.pairwiseCI}}.
 \item \kbd{Lognorm.ratio} and \kbd{Lognorm.ratio}: \bold{Chen, Y-H, Zhou, X-H (2006)}: Interval estimates for the ratio and the difference of two lognormal means.
 Statistics in Medicine 25, 4099-4113.
 
+\item \kbd{Np.re}: \bold{Brunner, E., Munzel, U. (2000).} The Nonparametric Behrens-Fisher Problem: Asymptotic Theory and a Small Sample Approximation. Biometrical Journal 42, 17 -25.
+\bold{Neubert, K., Brunner, E., (2006).} A Studentized Permutation Test for the Nonparametric Behrens-Fisher Problem. Computational Statistics and Data Analysis.
+
 \item \kbd{HL.diff}: \kbd{wilcox.exact} in \pkg{exactRankTests} 
 
 \item \kbd{HL.ratio}: \bold{Hothorn, T, Munzel, U:} Non-parametric confidence interval for the ratio. Report University of Erlangen, Department Medical Statistics 2002;
  available via: http://www.imbe.med.uni-erlangen.de/~hothorn/
 For the Hodges-Lehmann estimator see: \bold{Hodges, J.L., Lehmann E.L.(1963):} Estimates of location based on rank tests. Ann. Math. Statist. 34, 598-611.
-
-\item \kbd{HD.diff}: The interval is calculated from a bootstrap sample (stratified according to the group variable) of the difference of Harrel-Davis estimators, using package boot.
-
-\item \kbd{HD.ratio}: The interval is calculated from a bootstrap sample (stratified according to the group variable) of the ratio of Harrel-Davis estimators, using package boot.
-For the Harrell-Davis estimator see: \bold{Harrell, F.E.; Davis, C.E. (1982):} A new distribution-free quantile estimator. Biometrika 69, 635-640. 
 
 \item \kbd{Median.diff}: The interval is calculated from a bootstrap sample (stratified according to the group variable) of the difference of sample Medians, using package boot.
 
@@ -115,7 +112,7 @@ Note, that the 4 bootstrap versions will hardly make sense for small samples, be
 
 \item \kbd{Negbin.ratio}: Profile-likelihood CI, based on the assumption of the negative binomial distribution, basic method  described in \bold{Venables, W.N., Ripley, B.D. (2002):} Modern Applied Statistics with S. Springer Verlag, New York.
 
-\item \kbd{Prop.diff}: simply uses \kbd{prop.test} in \pkg{stats} which currently implements the continuity corrected interval as described under the acronym CC in
+\item \kbd{Prop.diff}: provides three approximate methods to calculate confidence intervals for the difference of proportions: Default is \kbd{CImethod="NHS"}: Newcombes Hybrid Score interval (Newcombe, 1998), other options are \kbd{CImethod="CC"} continuity corrected interval (Newcombe, 1998) as implemented in \kbd{prop.test(stats)} and \kbd{CImethod="AC"} Agresti-Caffo interval (Agresti and Caffo, 2000) 
 \bold{Newcombe R.G. (1998):} Interval Estimation for the Difference Between Independent Proportions: Comparison of Eleven Methods. Statistics in Medicine 17, 873-890. 
 
 \item \kbd{Prop.ratio} calculates the crude asymptotic interval (normal approximation on the log-scale, \kbd{CImethod="GNC"}) or the Score interval (\kbd{CImethod="Score"}), both described in:
@@ -246,27 +243,6 @@ aprootsRR
 plot(aprootsRR)
 
 ###############################################
-
-# Other available methods:
-
-data(dieldrin)
-
-boxplot(dieldrin~River, data=dieldrin)
-
-pairwiseCI(dieldrin~River, data=dieldrin, method="HD.diff")
-pairwiseCI(dieldrin~River, data=dieldrin, method="HD.ratio")
-
-pairwiseCI(dieldrin~River, data=dieldrin, method="HL.diff")
-pairwiseCI(dieldrin~River, data=dieldrin, method="HL.ratio")
-
-pairwiseCI(dieldrin~River, data=dieldrin, method="Median.diff")
-pairwiseCI(dieldrin~River, data=dieldrin, method="Median.ratio")
-
-
-data(sodium)
-
-pairwiseCI(dieldrin~River, data=dieldrin, method="HD.diff")
-pairwiseCI(dieldrin~River, data=dieldrin, method="HD.ratio")
 
 # CIs assuming lognormal distribution of the response:
 

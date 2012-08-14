@@ -35,33 +35,27 @@ and one column for the failures, and the rows containing repeated observations f
 Please note, that except for function \kbd{prop.or} with \kbd{CImethod="Quasibinomial"} the confidence intervals available in this function
  are based on sums over the rows of \kbd{x} and \kbd{y} and hence do NOT APPROPRIATELY account for extra-binomial variability between repeated observations for the same treatment! 
 
+  NOTE: When there are repeated observations (input as a data.frame with several rows), intervals are calculated based on the sums over the rows!
+  
 \itemize{
 \item \kbd{Prop.diff} calculates the asymptotic Continuity Corrected confidence interval for the difference
  of proportions by calling \kbd{prop.test} in package \pkg{stats}. See \kbd{?prop.test} for details.
- NOTE: When there are repeated observations (input as a data.frame with several rows), intervals are calculated based on the sums over the rows!
 
 \item \kbd{Prop.diff} with \kbd{CImethod="AC"} Calculates the Agresti-Caffo-Interval (Agresti and Caffo, 2000).
- NOTE: When there are repeated observations (input as a data.frame with several rows), intervals are calculated based on the sums over the rows!
 
 \item \kbd{Prop.diff} with \kbd{CImethod="NHS"} Calculates Newcombes Hybrid Score Interval (Newcombe, 1998).
- NOTE: When there are repeated observations (input as a data.frame with several rows), intervals are calculated based on the sums over the rows!
 
 \item \kbd{Prop.ratio} with \kbd{CImethod="GNC"} calculates the crude interval for the ratio of proportions 
  according to Gart and Nam (1988), based on normal approximation on the log-scale.
- NOTE: When there are repeated observations (input as a data.frame with several rows), intervals are calculated based on the sums over the rows!
 
 \item \kbd{Prop.ratio} with \kbd{CImethod="Score"} calculates the Score interval for the ratio of proportions 
- according to Gart and Nam (1988), based on a Chi-Square approximation.
-  NOTE: When there are repeated observations (input as a data.frame with several rows), intervals are calculated based on the sums over the rows!
+ according to Gart and Nam (1988), based on a Chi-Square approximation. These methods do NOT involve skewness corrections and extensions to stratification.
 
 \item \kbd{Prop.or} with \kbd{CImethod="Woolf"} calculates the adjusted Woolf confidence interval for
  the odds ratio of proportions as, e.g., described in Lawson (2005).
- NOTE: When there are repeated observations (input as a data.frame with several rows), intervals are calculated based on the sums over the rows!
 
 \item \kbd{Prop.or} with \kbd{CImethod="Exact"} calculates the exact confidence interval for
  the odds ratio of proportions corresponding to Fishers exact test, by calling to \kbd{fisher.test} in \pkg{stats}. For details, see \kbd{?fisher.test}.
- NOTE: When there are repeated observations (input as a data.frame with several rows), intervals are calculated based on the sums over the rows!
-
 
 }
 }

@@ -39,8 +39,6 @@ pairwiseCIProp(formula, data, alternative="two.sided",
     \kbd{"Lognorm.ratio"}: Ratio of two means, assuming a lognormal distribution,
     \kbd{"HL.diff"}: Exact nonparametric CI for difference of locations based on the Hodges-Lehmann estimator,
     \kbd{"HL.ratio"}: Exact nonparametric CI for ratio of locations, based on the Hodges-Lehmann estimator,
-    \kbd{"HD.diff"}: Nonparametric CI for difference of locations, based on the Harrell-Davis estimator (percentile bootstrap CI),
-    \kbd{"HD.ratio"}: Nonparametric CI for ratio of locations, based on the Harrell-Davis estimator (percentile bootstrap CI),
     \kbd{"Median.diff"}: Nonparametric CI for difference of locations, based on the medians (percentile bootstrap CI),
     \kbd{"Median.ratio"}: Nonparametric CI for ratio of locations, based on the medians (percentile bootstrap CI),
     \kbd{"Prop.diff"}: Asymptotic CI for difference of proportions \kbd{prop.test(stats)}

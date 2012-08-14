@@ -11,11 +11,11 @@ arglist$alternative <- alternative
 arglist$conf.level <- conf.level
 
 
-if(any(c("Param.ratio", "Lognorm.ratio", "HL.ratio", "HD.ratio", "Median.ratio", "Poisson.ratio", "Quasipoisson.ratio", "Negbin.ratio")==method)) 
+if(any(c("Param.ratio", "Lognorm.ratio", "HL.ratio", "Median.ratio", "Poisson.ratio", "Quasipoisson.ratio", "Negbin.ratio")==method)) 
  {sepcompname <- "/"}
 else
  {sepcompname <- "-"}
-
+if("np.re"==method){sepcompname <- ","}
 
 # check the arguments
 

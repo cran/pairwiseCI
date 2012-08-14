@@ -36,8 +36,6 @@ HL.ratio(x, y, conf.level=0.95, alternative="two.sided", ...)
 Median.diff(x, y, conf.level=0.95, alternative="two.sided", ...)
 Median.ratio(x, y, conf.level=0.95, alternative="two.sided", ...)
 
-HD.diff(x, y, conf.level=0.95, alternative="two.sided", ...)
-HD.ratio(x, y, conf.level=0.95, alternative="two.sided", ...)
 }
 
 \arguments{
@@ -83,18 +81,6 @@ HD.ratio(x, y, conf.level=0.95, alternative="two.sided", ...)
  by calling \kbd{wilcox.exact} in package \pkg{exactRankTests} for the logarithms of observations;
   
 
-\item \kbd{HD.diff} calculates a percentile bootstrap confidence interval for the difference
- of \dQuote{Harrell-Davis} estimates for location using code copied from \kbd{hdquantile} in package \pkg{Hmisc}
- and \kbd{boot.ci} in \pkg{boot}, the number of bootstrap replications can be set
- via \kbd{R=999} (default) ;
-
-
-\item \kbd{HD.ratio} calculates a percentile bootstrap confidence interval for the ratio
- of \dQuote{Harrell-Davis} estimates for location using code copied from \kbd{hdquantile} in package \pkg{Hmisc}
- and \kbd{boot.ci} in package \pkg{boot}, the number of bootstrap replications can be set
- via \kbd{R=999} (default); 
-
-
 \item \kbd{Median.diff} calculates a percentile bootstrap confidence interval for the difference
  of Medians using \kbd{boot.ci} in package \pkg{boot}, the number of bootstrap replications can be set
  via \kbd{R=999} (default); 
@@ -133,82 +119,55 @@ Statistics in Medicine 25, 4099-4113.
 \item \bold{Hothorn, T, Munzel, U}: Non-parametric confidence interval for the ratio.
  Report University of Erlangen, Department Medical Statistics 2002; available via:
 \url{http://www.imbe.med.uni-erlangen.de/~hothorn/}.
-
-
-\item \kbd{HD.diff} xxx
-
-
-\item \kbd{HD.ratio} xxx
-
-
-\item \kbd{Median.diff} xxx
-
-
-\item \kbd{Median.ratio} xxx
 }
 }
 
 
 \examples{
 
-##############################################
 
-# Dieldrin example: Two-sample situation:
+data(sodium)
 
-# The dieldrin example
+iso<-subset(sodium, Treatment=="xisogenic")$Sodiumcontent
+trans<-subset(sodium, Treatment=="transgenic")$Sodiumcontent
 
-data(dieldrin)
-
-Ray<-subset(dieldrin, River=="Ray")$dieldrin
-Thames<-subset(dieldrin, River=="aThames")$dieldrin
-
-Ray
-Thames
+iso
+trans
 
 ## CI for the difference of means, 
 # assuming normal errors and homogeneous variances :
 
-thomo<-Param.diff(x=Thames, y=Ray, var.equal=TRUE)
+thomo<-Param.diff(x=iso, y=trans, var.equal=TRUE)
 
 # allowing heterogeneous variances
-thetero<-Param.diff(x=Thames, y=Ray, var.equal=FALSE)
+thetero<-Param.diff(x=iso, y=trans, var.equal=FALSE)
 
 
 ## Fieller CIs for the ratio of means,
 # also assuming normal errors:
 
-Fielhomo<-Param.ratio(x=Thames, y=Ray, var.equal=TRUE)
+Fielhomo<-Param.ratio(x=iso, y=trans, var.equal=TRUE)
 
 # allowing heterogeneous variances
 
-Fielhetero<-Param.ratio(x=Thames, y=Ray, var.equal=FALSE)
+Fielhetero<-Param.ratio(x=iso, y=trans, var.equal=FALSE)
 
 
 ## Hodges-Lehmann Intervalls for difference and ratios:
 
-HLD<-HL.diff(x=Thames, y=Ray)
+HLD<-HL.diff(x=iso, y=trans,)
 
 # allowing heterogeneous variances
 
-HLR<-HL.ratio(x=Thames, y=Ray)
+HLR<-HL.ratio(x=iso, y=trans,)
 
 
-## Percentile Bootstrap intervals of Harrell-Davis estimators:
 
-HDD<-HD.diff(x=Thames, y=Ray)
-
-# allowing heterogeneous variances
-
-HDR<-HD.ratio(x=Thames, y=Ray)
-
-##  Percentile Bootstrap intervals of Medians:
-
-
-MedianD<-Median.diff(x=Thames, y=Ray)
+MedianD<-Median.diff(x=iso, y=trans,)
 
 # allowing heterogeneous variances
 
-MedianR<-Median.ratio(x=Thames, y=Ray)
+MedianR<-Median.ratio(x=iso, y=trans,)
 
 thomo
 thetero
@@ -218,9 +177,6 @@ Fielhetero
 
 HLD
 HLR
-
-HDD
-HDR
 
 MedianD
 MedianR
