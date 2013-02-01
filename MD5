@@ -1,4 +1,4 @@
-23d395a34b06fd8b9c571f1f0d4a3a06 *DESCRIPTION
+1b482a7a781c67e64bedcc968742401f *DESCRIPTION
 9556bb3a2978f12c0aeb639c55e3a555 *NAMESPACE
 88dddaaba4b25db5c3b557a6289df3c3 *R/HL.diff.R
 4b3313a36662844f48f7637d9455b9bd *R/HL.ratio.R
@@ -11,7 +11,7 @@ d60824cc25f13bf87e3267b300f3f540 *R/Median.ratio.R
 b94905af94996b900ce34eda424f1cfc *R/ProfileGLMCountMethods.R
 748b4cdfdfdae5c8195fd7962c6357ca *R/Prop.diff.R
 1f9c49dd3fb127bc546fca08fb2cf386 *R/Prop.or.R
-0f9d387f5d85dae5ae9493bead206ce2 *R/Prop.ratio.R
+961aed0637885937b6c8787b93a55904 *R/Prop.ratio.R
 45b0327d133df318ddba7886f389f24c *R/Prop.test.R
 fba79382c288beac9b1308ba7cbbea62 *R/as.data.frame.pairwiseMEP.R
 b4aa1612d239c67609dcd77c018dff59 *R/np.re.R
@@ -29,9 +29,9 @@ a37207d20ff5afe69605b88edacf6c61 *R/print.pairwiseTest.R
 485d3e92bdec264d24f1f5210b8ad35c *R/print.summary.pairwiseCI.R
 9a49e90d69d3de1f79024614d1ec3069 *R/summary.pairwiseCI.R
 c244695184b63ea19b895edd8d5e71b8 *R/summary.pairwiseTest.R
-3307034d4d1850e1ce6877b6e24c6a90 *data/Oats.rda
+ea56790ff12a5136603240aa177ef793 *data/Oats.rda
 4852e8f65edef900afc9c2a09955396c *data/bean.rda
-a8039f43883ce3ffb2c2ba88d6de67df *data/behenic.rda
+4fc92ea972c9344636d1d49b5647c3a8 *data/behenic.rda
 987ffb0a039145cef7a4033fc78a1507 *data/cabbage.rda
 666b223089ab4f0fbace731929478c8b *data/repellent.rda
 4a9afc0139998c0ebba390d19bf2b077 *data/rooting.rda
@@ -49,7 +49,7 @@ c7523662ae6c58d08188ad456acc0c12 *man/pairwiseCI.package.Rd
 75ec46cc876370d936ca0dd1a8eb664c *man/pairwiseCIInt.Rd
 e0ab08959746521818d52668cf5deb22 *man/pairwiseCImethodsCont.Rd
 e31ea94a8293372fc37dba31bdeec97a *man/pairwiseCImethodsCount.Rd
-d33029c59b940640a212004dd0d782f2 *man/pairwiseCImethodsProp.Rd
+b87a4d8bf6e4d7a6b51ac322b3c84723 *man/pairwiseCImethodsProp.Rd
 79519e22060ae1de9d01bb8a1130db03 *man/pairwiseMEP.Rd
 a2a0f2114cdab2fff6635874d17f1be3 *man/pairwiseTest.Rd
 1aecd0df81875afbbcbedd53ef97bcc4 *man/pairwiseTestInt.Rd
