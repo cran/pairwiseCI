@@ -64,21 +64,25 @@ Median.ratio(x, y, conf.level=0.95, alternative="two.sided", ...)
 
 
 \item \kbd{Lognorm.diff} calculates the confidence interval for the difference
- in means of two Lognormal samples, based on general pivotal quantities (Chen and Zhou, 2005); currently, further arguments \kbd{(\dots)}
+ in means of two Lognormal samples, based on general pivotal quantities (Chen and Zhou, 2006); currently, further arguments \kbd{(\dots)}
  are not used; 
 
 
 \item \kbd{Lognorm.ratio} calculates the confidence interval for the ratio
- in means of two Lognormal samples, based on general pivotal quantities (Chen and Zhou, 2005); currently, further arguments \kbd{(\dots)}
+ in means of two Lognormal samples, based on general pivotal quantities (Chen and Zhou, 2006); currently, further arguments \kbd{(\dots)}
  are not used; 
 
 
 \item \kbd{HL.diff} calculates the Hodges-Lehmann confidence interval for the difference of locations
- by calling \kbd{wilcox.exact} in package \pkg{exactRankTests} ;
+ by calling \kbd{wilcox_test} in package \pkg{coin}, further arguments \dots are passed to wilcox_test and 
+ corresponding methods for Independence problems, for example \code{distribution} may be used to switch 
+ from \code{exact} (default), to approximate or asymptotic versions;
 
 
-\item \kbd{HL.ratio} calculates the Hodges-Lehmann-like confidence interval for the ratio of locations
- by calling \kbd{wilcox.exact} in package \pkg{exactRankTests} for the logarithms of observations;
+\item \kbd{HL.ratio} calculates a Hodges-Lehmann-like confidence interval for the ratio of locations for positive data
+ by calling \kbd{wilcox_test} in package \pkg{coin} on the logarithms of observations and backtransforming (Hothorn and Munzel, 2002),
+ further arguments \dots are passed to wilcox_test and corresponding methods for Independence problems, for example \code{distribution} 
+ may be used to switch from \code{exact} (default), to approximate or asymptotic versions;
   
 
 \item \kbd{Median.diff} calculates a percentile bootstrap confidence interval for the difference
@@ -116,9 +120,9 @@ Journal of the Royal Statistical Society, Series B, 16, 175-185.
  \item  \bold{Chen, Y-H, Zhou, X-H (2006)}: Interval estimates for the ratio and the difference of two lognormal means.
 Statistics in Medicine 25, 4099-4113.
 
-\item \bold{Hothorn, T, Munzel, U}: Non-parametric confidence interval for the ratio.
- Report University of Erlangen, Department Medical Statistics 2002; available via:
-\url{http://www.imbe.med.uni-erlangen.de/~hothorn/}.
+\item \bold{Hothorn, T, Munzel, U}: Exact Nonparametric Confidence Interval for the Ratio of Medians.
+ Technical Report, Universitaet Erlangen-Nuernberg, Institut fuer Medizininformatik, Biometrie und Epidemiologie, 2002; available via:
+\url{http://www.statistik.lmu.de/~hothorn/bib/TH_TR_bib.html}.
 }
 }
 
@@ -153,21 +157,7 @@ Fielhomo<-Param.ratio(x=iso, y=trans, var.equal=TRUE)
 Fielhetero<-Param.ratio(x=iso, y=trans, var.equal=FALSE)
 
 
-## Hodges-Lehmann Intervalls for difference and ratios:
-
-HLD<-HL.diff(x=iso, y=trans,)
-
-# allowing heterogeneous variances
-
-HLR<-HL.ratio(x=iso, y=trans,)
-
-
-
-MedianD<-Median.diff(x=iso, y=trans,)
-
-# allowing heterogeneous variances
-
-MedianR<-Median.ratio(x=iso, y=trans,)
+HLD<-HL.diff(x=iso, y=trans)
 
 thomo
 thetero
@@ -176,10 +166,7 @@ Fielhomo
 Fielhetero
 
 HLD
-HLR
 
-MedianD
-MedianR
 
 # # #
 

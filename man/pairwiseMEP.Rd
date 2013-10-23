@@ -53,19 +53,16 @@ pairwiseMEP(x, ...)
 
 x1<-rnorm(120,20,2)
 x2<-rnorm(120,100,8)
-x3<-rpois(120,10)
-x4<-rnbinom(120,mu=10, size=10)
+x3<-rnbinom(120,mu=10, size=10)
 A<-rep(c("a1","a2","a3"), c(40,40,40))
-B<-rep(rep(c("b1","b2","b3","b4"), c(10,10,10,10)), times=3)
-dat<-data.frame(x1=x1,x2=x2,x3=x3,x4=x4,A=A, B=B)
+B<-rep(rep(c("b1","b2"), c(20,20)), times=3)
+dat<-data.frame(x1=x1,x2=x2,x3=x3,A=A, B=B)
 
-test<-pairwiseMEP(x=dat, ep=c("x1","x2","x3", "x4"), control="a1",
- f="A", by="B", method=c("Param.ratio","Param.ratio","Negbin.ratio","Negbin.ratio"))
+test<-pairwiseMEP(x=dat, ep=c("x1","x2","x3"), control="a1",
+ f="A", by="B", method=c("Param.ratio","Param.ratio","Negbin.ratio"))
 test
 
 plotCI(test, whichep=c("x1","x2"))
-
-plotCI(test, whichep=c("x3","x4"))
 }
 
 \keyword{ htest }

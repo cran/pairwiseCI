@@ -3,8 +3,6 @@ Median.ratio<-function(x, y, conf.level=0.95, alternative="two.sided", ...)
 
 {
 
-require(boot)
-
 x<-as.numeric(x)
 y<-as.numeric(y)
 

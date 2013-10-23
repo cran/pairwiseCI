@@ -6,7 +6,7 @@
   Only for internal use in pairwiseTest.
 }
 \usage{
-Prop.test(x, y, alternative = "two.sided", ...)
+Prop.test(x, y, alternative = "two.sided", test=c("prop.test", "fisher.test"), ...)
 }
 \arguments{
   \item{x}{ a vector of success and failure in sample x,
@@ -14,7 +14,8 @@ Prop.test(x, y, alternative = "two.sided", ...)
   \item{y}{ a vector of success and failure in sample y,
  or a data.frame with a column of successes and a column of failures, then colSums are used. }
   \item{alternative}{ character string defining the alternative hypothesis }
-  \item{\dots}{ arguments to be passed to \kbd{prop.test(stats)} }
+  \item{test}{ a single character string: which function to be called, choices are \kbd{"prop.test"} for the chi-square test, and "fisher.test" for Fishers exact test, as they are defined in package stats}
+  \item{\dots}{ arguments to be passed to \kbd{prop.test(stats)} or \kbd{fisher.test(stats)} }
 }
 \details{
 Just a wrapper function to call \kbd{prop.test(stats)}. 

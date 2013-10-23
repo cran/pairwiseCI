@@ -5,15 +5,13 @@ pairwiseCI, pairwiseTest, pairwiseMEP, pairwiseMEP.data.frame,
 plotCI.pairwiseMEP
 )
 
-import(
-  stats,
-  exactRankTests,
-  boot,
-  mratios,
-  binMto,
-  MASS,
-  MCPAN
-)
+import(MCPAN)
+import(coin)
+
+importFrom(mratios, t.test.ratio, t.test.ratio.default)
+importFrom(boot, boot, boot.ci)
+importFrom(binMto, NHS, Add4)
+importFrom(MASS, glm.nb)
 
 S3method(plot, pairwiseCI)
 S3method(print, pairwiseCI)
@@ -21,7 +19,10 @@ S3method(summary, pairwiseCI)
 S3method(as.data.frame, pairwiseCI)
 
 S3method(print, pairwiseTest)
+S3method(print, pairwiseCI)
+S3method(print, summary.pairwiseCI)
 S3method(summary, pairwiseTest)
 
 S3method(as.data.frame, pairwiseMEP)
 S3method(plotCI, pairwiseMEP)
+S3method(plotCI, pairwiseCI)

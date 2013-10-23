@@ -2,8 +2,6 @@
 function(x, whichep=NULL, ...)
 {
 
-require(MCPAN)
-
 pargs<-list(...)
 
 tabm<-table(x$method)

@@ -78,7 +78,6 @@ profileDG <- function(fit, steps=100, wh=1:p){
 Poisson.ratio<-function(x, y, conf.level=0.95, alternative="two.sided")
 {
 
-require(MASS)
 
 alternative<-match.arg(alternative, choices=c("two.sided","less","greater"))
 
@@ -190,8 +189,6 @@ estimate=estimate)
 
 Quasipoisson.ratio<-function(x, y, conf.level=0.95, alternative="two.sided")
 {
-
-require(MASS)
 
 alternative<-match.arg(alternative, choices=c("two.sided","less","greater"))
 
@@ -316,7 +313,6 @@ estimate=estimate)
 Negbin.ratio<-function(x, y, conf.level=0.95, alternative="two.sided")
 {
 
-require(MASS)
 
 alternative<-match.arg(alternative, choices=c("two.sided","less","greater"))
 

@@ -2,7 +2,6 @@
 Param.ratio <- function(x, y, conf.level=0.95, alternative="two.sided", ...)
 
 {
-require(mratios)
 
 addargs<-list(...)
 

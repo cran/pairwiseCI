@@ -2,26 +2,29 @@
 HL.diff <- function(x, y, conf.level=0.95, alternative="two.sided", ...)
 
 {
-require(exactRankTests)
 
-x<-as.numeric(x)
-y<-as.numeric(y)
+x <- na.omit(as.numeric(x))
+y <- na.omit(as.numeric(y))
 
+xy <- c(x,y)
+fxy <- factor(rep(c("x","y"),c(length(x), length(y))))
+dxy <- data.frame("xy"=xy, "fxy"=fxy)
 addargs<-list(...)
 
-addargs$x <- x
-addargs$y <- y
+addargs$formula <- as.formula("xy ~ fxy")
+addargs$data <- dxy
 addargs$alternative <- alternative
 addargs$conf.level <- conf.level
 addargs$conf.int <- TRUE
 
+if(is.null(addargs$distribution)){addargs$distribution <- "exact"}
 
+ temp <- do.call(what="wilcox_test", args=addargs)
+ tempCI <- confint(temp)
 
- temp <- do.call(what="wilcox.exact", args=addargs)
-
- conf.int <- temp$conf.int 
- estimate <- temp$estimate
- METHOD <- "Difference of location using the Hodges-Lehmann estimator"
+ conf.int <- tempCI$conf.int 
+ estimate <- tempCI$estimate
+ METHOD <- "Difference in location (Hodges-Lehmann estimator)"
 
 attr(conf.int, which="methodname")<-METHOD
 

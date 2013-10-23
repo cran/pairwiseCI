@@ -20,7 +20,7 @@ if(!is.character(ep)) {stop("Argument ep must be a character vector!")}
 if(!is.character(f)) {stop("Argument f must be a single character string!")}
 if(!is.character(method)) {stop("Argument method must be a character vector!")}
 if(length(f)!=1) {stop("Argument f must be a single character string!")}
-if(method%in%c("Prop.diff", "Prop.ratio","Prop.or")){stop("Methods for binary data are currently not available for multiple endpoints!")}
+if(any(method%in%c("Prop.diff", "Prop.ratio","Prop.or"))){stop("Methods for binary data are currently not available for multiple endpoints!")}
 
 tabep<-table(ep)
 if(any(tabep!=1)){

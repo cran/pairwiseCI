@@ -5,7 +5,7 @@ byout <- object$byout
 bynames <- object$bynames
 method <- object$method
 
-METHOD<-object[[1]]$method
+if(length(bynames)==1){METHOD<-object[[1]]$method}else{METHOD<-object$byout[[1]]$method}
 
 if(length(bynames)==1)
  {

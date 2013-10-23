@@ -34,27 +34,22 @@ from object \code{x} shall be coerced to a data.frame; if omitted (default), all
 \examples{
 
 x1<-rnorm(120,20,2)
-x2<-rnorm(120,100,8)
-x3<-rpois(120,10)
-x4<-rnbinom(120,mu=10, size=10)
+x2<-rnbinom(120,mu=10, size=10)
 A<-rep(c("a1","a2","a3"), c(40,40,40))
-B<-rep(rep(c("b1","b2","b3","b4"), c(10,10,10,10)), times=3)
+B<-rep(rep(c("b1","b2"), c(20,20)), times=3)
 
-dat<-data.frame(x1=x1, x2=x2, x3=x3, x4=x4, A=A, B=B)
+dat<-data.frame(x1=x1, x2=x2, A=A, B=B)
 
 test<-pairwiseMEP(x=dat,
- ep=c("x1","x2","x3", "x4"),
+ ep=c("x1","x2"),
  f="A", by="B",
- method=c("Param.ratio","Param.ratio","Negbin.ratio","Negbin.ratio"))
+ method=c("Param.ratio","Negbin.ratio"))
 
 test
 
 as.data.frame(test)
 
-
 as.data.frame(test, whichep=c(1,2))
-
-as.data.frame(test, whichep=c(3,4))
 
 as.data.frame(test, whichep=c("x1","x2"))
 

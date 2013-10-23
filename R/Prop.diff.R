@@ -41,8 +41,6 @@ CC={
 
 AC={
 
-require(binMto)
-
    args$nx <- n[1]
    args$ny <- n[2]
    args$X <- x[1]
@@ -68,7 +66,6 @@ METHOD<-"Agresti-Caffo interval for the difference of proportions"
 
 NHS={
 
-require(binMto)
 
    args$nx <- n[1]
    args$ny <- n[2]

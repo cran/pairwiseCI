@@ -32,20 +32,6 @@ and the conf.level and a character string naming the used method.
 \seealso{ \code{\link{pairwiseCI}}, \code{\link{summary.pairwiseTest}} }
 \examples{
 
-data(bean)
-
-out<-pairwiseCI(yield~P, data=bean, by="T", method="Param.diff",
- var.equal=FALSE, alternative="greater")
-
-out
-
-dat<-as.data.frame(out)
-
-dat
-
-str(dat)
-
-# # # #
 
 data(repellent)
 
