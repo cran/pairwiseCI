@@ -11,7 +11,7 @@ pargs$digits<-digits
 METHOD<-x$byout[[1]]$method
 
   cat(" ","\n")
-  cat(x$conf.level*100, " %-confidence intervals", "\n")
+  cat(format(x$conf.level*100, digits=digits), "%-confidence intervals", "\n")
   cat(" Method: ", METHOD, "\n")
   cat(" ","\n")
 

@@ -1,6 +1,6 @@
 export(
 Param.diff, Param.ratio, HL.diff, HL.ratio, Lognorm.diff, Lognorm.ratio, Median.diff, Median.ratio, np.re, Prop.diff, Prop.ratio, Prop.or, Prop.test,
-Poisson.ratio, Quasipoisson.ratio, Negbin.ratio,
+Poisson.ratio, Quasipoisson.ratio, Negbin.ratio, Betabin.ratio, ODbin.ratio, Quasibin.ratio, QBmover, MOVERR,
 pairwiseCI, pairwiseTest, pairwiseMEP, pairwiseMEP.data.frame,
 plotCI.pairwiseMEP
 )
@@ -12,6 +12,10 @@ importFrom(mratios, t.test.ratio, t.test.ratio.default)
 importFrom(boot, boot, boot.ci)
 importFrom(binMto, NHS, Add4)
 importFrom(MASS, glm.nb)
+importFrom(mcprofile, mcprofile)
+importFrom("graphics", "axis","abline", "arrows", "box", "lines", "par", "plot", "plot.new", "points", "strwidth")
+importFrom("stats", "as.formula","approx", "spline", "coef", "coefficients", "confint", "deviance", "family", "glm", "glm.fit", "median", "model.frame", "model.matrix", "model.offset", "model.response", "model.weights", "na.omit", "pnorm", "pt", "qnorm", "qt", "quantile", "rchisq", "rnorm", "uniroot", "var", "binomial", "poisson", "quasibinomial", "quasipoisson")
+
 
 S3method(plot, pairwiseCI)
 S3method(print, pairwiseCI)
@@ -26,3 +30,5 @@ S3method(summary, pairwiseTest)
 S3method(as.data.frame, pairwiseMEP)
 S3method(plotCI, pairwiseMEP)
 S3method(plotCI, pairwiseCI)
+
+S3method(pairwiseMEP, data.frame)

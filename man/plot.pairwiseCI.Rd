@@ -27,8 +27,7 @@ Easy method for plotting estimates and confidence bounds calculated using \code{
   \item{main}{ as \kbd{main} in \kbd{plot}  }
   \item{ylab}{ label of y-axis as \kbd{ylab} in \kbd{plot}, default is no label}
   \item{xlab}{ label of x-axis as \kbd{ylab} in \kbd{plot}, default is no label }
-  \item{\dots}{Further arguments to be passed to \kbd{plot}. Note, that for adjusting character size in the axes,
- one must currently adjust \kbd{par(cex.axis)}, and some arguments as \kbd{las}, \kbd{at}, \kbd{labels} are defined internally. }
+  \item{\dots}{Further arguments to be passed to \kbd{axis}. Note, that arguments \kbd{las}, \kbd{at}, \kbd{labels} are defined internally and can not be set via \dots }
 
 }
 

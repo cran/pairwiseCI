@@ -11,7 +11,7 @@ arglist$alternative <- alternative
 arglist$conf.level <- conf.level
 
 
-if(method %in% c("Prop.ratio", "Prop.or")) 
+if(method %in% c("Prop.ratio", "Prop.or", "Quasibin.ratio", "ODbin.ratio", "Betabin.ratio")) 
  {sepcompname <- "/"}
 else
  {sepcompname <- "-"}
@@ -101,7 +101,7 @@ if(is.null(control) == FALSE)
 {
 
 if(all(levelnames != control))
- {stop(paste("there is no control",control, "among the levels of the grouping variable"))}
+ {stop(paste("there is no control named",control, "among the levels of the grouping variable"))}
 
 # extract the control group 
 cgroup <- datalist[[control]]

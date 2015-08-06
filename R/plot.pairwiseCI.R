@@ -37,14 +37,10 @@ conf.level <- x$conf.level
 
 # # # shall the CI be plotted vertical or horizontal
 
-if(is.null(CIvert))
- {
-  CIvert <- FALSE
- }
+if(is.null(CIvert)){CIvert <- FALSE}
 
 
 # # # which H0line shall be plotted: find a default
-
 
 if(is.null(H0line))
  {
@@ -67,239 +63,28 @@ H0line <- H0par[,1]
 H0lty <- H0par[,2]
 H0lwd <- H0par[,3]
 
-
-
 # # # only one by-group:
 
 if(length(byout)==1)
 
 {
 
- lower <- byout[[1]]$lower
- upper <- byout[[1]]$upper
- estimate <- byout[[1]]$estimate
- compnames <- byout[[1]]$compnames
- num <- 1:length(estimate) # index vector for the number of comparisons
+ LOWER <- byout[[1]]$lower
+ UPPER <- byout[[1]]$upper
+ ESTIMATE <- byout[[1]]$estimate
+ COMPNAMES <- byout[[1]]$compnames
+ nest <- length(ESTIMATE)
+ num <- 1:nest # index vector for the number of comparisons
  
- 
-
 
  # # # all vectors of equal length??
 
- if( any( c(length(lower), length(upper), length(estimate)) != length(compnames) ) )
-  { stop("plot.pairwiseCI INTERNAL: length of any (lower, upper,estimate, compnames) is not the same") }
+ if( any( c(length(LOWER), length(UPPER), length(ESTIMATE)) != length(COMPNAMES) ) )
+  { stop("plot.pairwiseCI INTERNAL: length of any (LOWER, UPPER, ESTIMATE, COMPNAMES) is not the same") }
 
- # # # remove NAs from the vectors of upper or lower limit:
- # # # replace them by the corresponding estimates
+}else{
 
- if( any(c("Param.ratio", "Lognorm.ratio", "HL.ratio", "HD.ratio", "Median.ratio", "prop.ratio", "prop.or") == method) )
-  { 
-  if( any(is.na(lower)) || any(is.na(upper)) ) 
-   
-  lower[ which(is.na(lower)) ] <- estimate[ which(is.na(lower)) ] 
-  upper[ which(is.na(upper)) ] <- estimate[ which(is.na(upper)) ] 
-  }
-
-
- # # # find the PLOT margins:
-
- # # # alternative="two.sided"
- 
- if(alternative=="two.sided")
-  {
-   lplot <- min(lower, H0line )  
-   uplot <- max(upper, H0line )
-  }
-
- if(alternative=="less")
-  {
-   lplot <- min(H0line, estimate) 
-   uplot <- max(upper, H0line) 
-  }
-
- if(alternative=="greater")
-  {
-   lplot <- min(H0line, lower) 
-   uplot <- max(estimate, H0line) 
-  }
-
-
- # # # define MAIN, SUB, YLAB,. . .
-
-if(is.null(main)){main <- ""}
-
- # # # produce the RATIO-PLOT:
-
-if( CIvert==TRUE )
- {
-
- plot.new() 
-
- # the default margin size in inches
-  mymai <- par(no.readonly=TRUE)$mai
-
- # adjust margin under the x axis according to length of comparison names
-  xwidth<- 1.1 * max(strwidth(compnames, units = "inches", cex = par("cex.axis"))) 
-
- if (mymai[1] < xwidth) 
-        mymai[1] <- xwidth
- par(mai=mymai, new=TRUE)
-
-
-plot(x = num, y = estimate, axes = FALSE, ylim = c(lplot, uplot), 
- type="p", pch=16, cex=CIcex,
- xlab=" ",
- ylab=ylab,
- main=main
- )
-
-
-axis(side = 1, at = num, labels=compnames, las=2, ...)
-axis(side=2,...)
-box()
-
-
-if(alternative=="two.sided")
- {
- for(i in 1:length(num))
-  {
-  lines(x = c(num[i],num[i]), y = c(lower[i], upper[i]), lty = CIlty, lwd=CIlwd)
-  points(x = num[i], y = lower[i], pch="-", cex = CIcex*1.5)
-  points(x = num[i], y = upper[i], pch="-", cex = CIcex*1.5)
-  }
-
- for(l in 1:length(H0line))
-  {lines(x=range(num)+c(-1,1), y=rep(H0line[l],times=2), lty=H0lty[l], lwd=H0lwd[l])}
-
-
- }
-
-
-if(alternative=="less")
- {
- for(i in 1:length(num))
-  {
-  lines(x = c(num[i],num[i]), y = c(lplot, upper[i]), lty = CIlty, lwd=CIlwd)
-  points(x = num[i], y = upper[i], pch="-", cex = CIcex*1.5)
-  }
-
- for(l in 1:length(H0line))
-  {lines(x=range(num)+c(-1,1), y=rep(H0line[l],times=2), lty=H0lty[l], lwd=H0lwd[l])}
-
-
- }
-
-
-if(alternative=="greater")
- {
- for(i in 1:length(num))
-  {
-  lines(x = c(num[i],num[i]), y = c(lower[i], uplot), lty = CIlty, lwd=CIlwd)
-  points(x = num[i], y = lower[i], pch="--", cex = CIcex*1.5)
-  }
-
- for(l in 1:length(H0line))
-  {lines(x=range(num)+c(-1,1), y=rep(H0line[l],times=2), lty=H0lty[l], lwd=H0lwd[l])}
-
- }
-
-
-}
-
-
-
- # # # produce the CI vertical-PLOT
-
-if( CIvert==FALSE )
- {
-
- 
-
-
- plot.new()
-
-# the default margin size in inches
-   mymai <- par(no.readonly=TRUE)$mai
-
- # adjust margin left of the y axis according to length of comparison names
-  ywidth<- 1.1 * max(strwidth(compnames, units = "inches", cex = par("cex.axis"))) 
-
- if (mymai[2] < ywidth) 
-        mymai[2] <- ywidth
- par(mai=mymai, new=TRUE)
-
-num<-rev(num)
-
-plot(x = estimate, y = num, axes = FALSE, xlim = c(lplot, uplot), 
- type="p", pch=16, cex=CIcex,
- ylab=" ",
- xlab=xlab,
-  main=main
- )
-
-
-axis(side = 2, at = num, labels=compnames, las=2, ...)
-axis(side=1, ...)
-box()
-
-
-if(alternative=="two.sided")
- {
- for(i in 1:length(num))
-  {
-  lines(y = c(num[i],num[i]), x = c(lower[i], upper[i]), lty = CIlty, lwd=CIlwd)
-  points(y = num[i], x = lower[i], pch="[", cex = CIcex)
-  points(y = num[i], x = upper[i], pch="]", cex = CIcex)
-  }
-
- for(l in 1:length(H0line))
-  {lines(y=range(num)+c(-1,1), x=rep(H0line[l],times=2), lty=H0lty[l], lwd=H0lwd[l])}
-
- }
-
-
-if(alternative=="less")
- {
- for(i in 1:length(num))
-  {
-  lines(y = c(num[i],num[i]), x = c(lplot, upper[i]), lty = CIlty, lwd=CIlwd)
-  points(y = num[i], x = upper[i], pch="]", cex = CIcex)
-  }
-
- for(l in 1:length(H0line))
-  {lines(y=range(num)+c(-1,1), x=rep(H0line[l],times=2), lty=H0lty[l], lwd=H0lwd[l])}
-
- }
-
-
-if(alternative=="greater")
- {
- for(i in 1:length(num))
-  {
-  lines(y = c(num[i],num[i]), x = c(lower[i], uplot), lty = CIlty, lwd=CIlwd)
-  points(y = num[i], x = lower[i], pch="[", cex = CIcex)
-  }
-
- for(l in 1:length(H0line))
-  {lines(y=range(num)+c(-1,1), x=rep(H0line[l],times=2), lty=H0lty[l], lwd=H0lwd[l])}
-
- }
-
-}
-
-
-}
-# end ONE BY-GROUP
-
-
-
-
-
-# # # several BY-groups:
-
-if(length(byout)>1)
- {
-
+# # # more than one by-group:
 
   k <- length(bynames)
   
@@ -315,195 +100,120 @@ if(length(byout)>1)
     estimatek <- c(estimatek, byout[[e]]$estimate)     
     compnamesk <- c(compnamesk, paste(bynames[[e]], ":", byout[[e]]$compnames) ) 
     }
-  num <- 1:length(estimatek)
+ 
+  LOWER <-lowerk
+  UPPER <-upperk
+  ESTIMATE <-  estimatek
+  COMPNAMES <- compnamesk 
 
+  nest <- length(estimatek)
+  num <- 1:nest
+}
 
+ # # # find the PLOT margins:
 
- # # # all vectors of equal length??
+ if(alternative=="two.sided")
+  {
+   lplot <- min(LOWER, H0line )  
+   uplot <- max(UPPER, H0line )
+  }
 
-# if( any( c(length(lowerk), length(upperk), length(estimatek)) != length(compnamesk) ) )
-#  { stop("plot.pairwiseCI INTERNAL: length of any (lowerk, upperk,estimatek, compnamesk) is not the same") }
+ if(alternative=="less")
+  {
+   lplot <- min(H0line, ESTIMATE) 
+   uplot <- max(UPPER, H0line) 
+  }
 
- # # # remove NAs from the vectors of upper or lower limit:
- # # # replace them by the corresponding estimates
-
- if( any(c("Param.ratio", "Lognorm.ratio", "HL.ratio", "HD.ratio", "Median.ratio", "prop.or", "prop.ratio") == method) )
-  { 
-  if( any(is.na(lowerk)) || any(is.na(upperk)) ) 
-   
-  lowerk[ which(is.na(lowerk)) ] <- estimatek[ which(is.na(lowerk)) ] 
-  upperk[ which(is.na(upperk)) ] <- estimatek[ which(is.na(upperk)) ] 
+ if(alternative=="greater")
+  {
+   lplot <- min(H0line, LOWER) 
+   uplot <- max(ESTIMATE, H0line) 
   }
 
 
- # # # find the PLOT margins:
- if(alternative=="two.sided")
-  {plotlim <- range(lowerk, estimatek, upperk, H0line)}
-
- if(alternative=="less")
-  {plotlim <- range( estimatek, upperk, H0line)}
-
- if(alternative=="greater")
-  {plotlim <- range(lowerk, estimatek, H0line)}
-
  # # # define MAIN, SUB, YLAB,. . .
 
-if(is.null(main)){main <- " "}
+if(is.null(main)){main <- ""}
+
+# adjustment of cex.axis?
+
+dargs <- list(...)
+if(is.null(dargs$cex.axis)){CEX.AXIS <- par("cex.axis")}else{CEX.AXIS <- dargs$cex.axis}
 
 
- # # # produce the CI vertical-PLOT:
+# # # plot with vertical CIs
 
-if( CIvert==TRUE )
+if(CIvert)
  {
 
- plot.new()
+ plot.new() 
+
  # the default margin size in inches
   mymai <- par(no.readonly=TRUE)$mai
 
  # adjust margin under the x axis according to length of comparison names
-  xwidth<- 1.5 * max(strwidth(compnamesk, units = "inches", cex = par("cex.axis"))) 
+  xwidth<- 1.3 * max(strwidth(COMPNAMES, units = "inches", cex = CEX.AXIS)) 
 
- if (mymai[1] < xwidth) 
-        mymai[1] <- xwidth
+ if(mymai[1] < xwidth){mymai[1] <- xwidth}
+
  par(mai=mymai, new=TRUE)
 
-
-plot(x = num, y = estimatek, axes = FALSE, ylim = plotlim, 
+plot(x = num, y = ESTIMATE, axes = FALSE, ylim = c(lplot, uplot), xlim=c(0.7, nest+0.3),
  type="p", pch=16, cex=CIcex,
+ xlab=" ",
  ylab=ylab,
- xlab="",
-  main=main
+ main=main
  )
 
-
-axis(side = 1, at = num, labels=compnamesk, las=2 )
+axis(side = 1, at = num, labels=COMPNAMES, las=2, ...)
 axis(side=2, ...)
 box()
 
+abline(h=H0line, lty=H0lty, lwd=H0lwd)
 
-if(alternative=="two.sided")
- {
- for(i in 1:length(num))
-  {
-  lines(x = c(num[i],num[i]), y = c(lowerk[i], upperk[i]), lty = CIlty, lwd=CIlwd)
-  points(x = num[i], y = lowerk[i], pch="-", cex = CIcex*1.5)
-  points(x = num[i], y = upperk[i], pch="-", cex = CIcex*1.5)
-  }
+CIlengthin <- 0.3*par("fin")[1]/nest
 
- for(l in 1:length(H0line))
-  {lines(x=range(num)+c(-1,1), y=rep(H0line[l],times=2), lty=H0lty[l], lwd=H0lwd[l])}
-
- }
-
-
-if(alternative=="less")
- {
- for(i in 1:length(num))
-  {
-  lines(x = c(num[i],num[i]), y = c(min(plotlim), upperk[i]), lty = CIlty, lwd=CIlwd)
-  points(x = num[i], y = upperk[i], pch="-", cex = CIcex*1.5)
-  }
-
- for(l in 1:length(H0line))
-  {lines(x=range(num)+c(-1,1), y=rep(H0line[l],times=2), lty=H0lty[l], lwd=H0lwd[l])}
-
-
- }
-
-
-if(alternative=="greater")
- {
- for(i in 1:length(num))
-  {
-  lines(x = c(num[i],num[i]), y = c(lowerk[i], max(plotlim)), lty = CIlty, lwd=CIlwd)
-  points(x = num[i], y = lowerk[i], pch="--", cex = CIcex*1.5)
-  }
-
- for(l in 1:length(H0line))
-  {lines(x=range(num)+c(-1,1), y=rep(H0line[l],times=2), lty=H0lty[l], lwd=H0lwd[l])}
-
- }
-
+if(alternative=="two.sided"){arrows(x0 = num, x1=num, y0 = LOWER, y1=UPPER,length=CIlengthin, angle=90, code=3 ) }
+if(alternative=="less"){arrows(x0 = num, x1=num, y0 = lplot, y1=UPPER,length=CIlengthin, angle=90, code=2 )}
+if(alternative=="greater"){arrows(x0 = num, x1=num, y0 = LOWER, y1=uplot, length=CIlengthin, angle=90, code=1 )}
 }
 
 
+# # # plot with horizontal CIs
 
- # # # produce the CI horizontal-PLOT
-
-if( CIvert==FALSE )
+if(!CIvert)
  {
-
-
 
  plot.new()
 
- # the default margin size in inches
+# the default margin size in inches
    mymai <- par(no.readonly=TRUE)$mai
 
  # adjust margin left of the y axis according to length of comparison names
-  ywidth<- 1.5 * max(strwidth(compnamesk, units = "inches", cex = par("cex.axis"))) 
+  ywidth<- 1.3 * max(strwidth(COMPNAMES, units = "inches", cex = CEX.AXIS)) 
 
- if (mymai[2] < ywidth) 
-        mymai[2] <- ywidth
+ if(mymai[2] < ywidth){mymai[2] <- ywidth}
+ 
  par(mai=mymai, new=TRUE)
 
 num<-rev(num)
 
-plot(x = estimatek, y = num, axes = FALSE, xlim = plotlim, 
+plot(x = ESTIMATE, y = num, axes = FALSE, xlim = c(lplot, uplot), ylim=c(0.7, nest+0.3),
  type="p", pch=16, cex=CIcex,
- ylab="",
+ ylab=" ",
  xlab=xlab,
   main=main
  )
 
-
-axis(side = 2, at = num, labels=compnamesk, las=2 )
+axis(side = 2, at = num, labels=COMPNAMES, las=2, ...)
 axis(side=1, ...)
 box()
 
-
-if(alternative=="two.sided")
- {
- for(i in 1:length(num))
-  {
-  lines(y = c(num[i],num[i]), x = c(lowerk[i], upperk[i]), lty = CIlty, lwd=CIlwd)
-  points(y = num[i], x = lowerk[i], pch="[", cex = CIcex)
-  points(y = num[i], x = upperk[i], pch="]", cex = CIcex)
-  }
-
- for(l in 1:length(H0line))
-  {lines(y=range(num)+c(-1,1), x=rep(H0line[l],times=2), lty=H0lty[l], lwd=H0lwd[l])}
- }
-
-
-if(alternative=="less")
- {
- for(i in 1:length(num))
-  {
-  lines(y = c(num[i],num[i]), x = c(min(plotlim), upperk[i]), lty = CIlty, lwd=CIlwd)
-  points(y = num[i], x = upperk[i], pch="]", cex = CIcex)
-  }
-
- for(l in 1:length(H0line))
-  {lines(y=range(num)+c(-1,1), x=rep(H0line[l],times=2), lty=H0lty[l], lwd=H0lwd[l])}
-
- }
-
-
-if(alternative=="greater")
- {
- for(i in 1:length(num))
-  {
-  lines(y = c(num[i],num[i]), x = c(lowerk[i], max(plotlim)), lty = CIlty, lwd=CIlwd)
-  points(y = num[i], x = lowerk[i], pch="[", cex = CIcex)
-  }
-
- for(l in 1:length(H0line))
-  {lines(y=range(num)+c(-1,1), x=rep(H0line[l],times=2), lty=H0lty[l], lwd=H0lwd[l])}
-
- }
-
-}
+CIlengthin <- 0.3*par("fin")[2]/nest
+abline(v=H0line, lty=H0lty, lwd=H0lwd)
+if(alternative=="two.sided"){arrows(y0 = num, y1=num, x0 = LOWER, x1=UPPER,length=CIlengthin, angle=90, code=3 ) }
+if(alternative=="less"){arrows(y0 = num, y1=num, x0 = lplot, x1=UPPER,length=CIlengthin, angle=90, code=2 )}
+if(alternative=="greater"){arrows(y0 = num, y1=num, x0 = LOWER, x1=uplot, length=CIlengthin, angle=90, code=1 )}
 
 }
 

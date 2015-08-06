@@ -7,7 +7,8 @@ alternative="two.sided", conf.level=0.95,
 
 # # # # #
 
-method<-match.arg(method, choices=c("Param.diff", "Param.ratio", "Lognorm.diff", "Lognorm.ratio","HL.diff", "HL.ratio", "Median.diff" ,"Median.ratio", "Prop.diff", "Prop.ratio", "Prop.or", "Negbin.ratio", "Poisson.ratio", "Quasipoisson.ratio", "np.re"))
+method<-match.arg(method, choices=c("Param.diff", "Param.ratio", "Lognorm.diff", "Lognorm.ratio","HL.diff", "HL.ratio",
+ "Median.diff" ,"Median.ratio", "Prop.diff", "Prop.ratio", "Prop.or", "Negbin.ratio", "Poisson.ratio", "Quasipoisson.ratio", "Quasibin.ratio", "ODbin.ratio", "Betabin.ratio", "np.re"))
 
 
 alternative<-match.arg(alternative, choices=c("two.sided", "less", "greater"))
@@ -29,7 +30,7 @@ if (all(class(data) != "data.frame"))
 
 lhs<-formula[[2]]
 
-if(method %in% c("Prop.diff", "Prop.ratio", "Prop.or"))
+if(method %in% c("Prop.diff", "Prop.ratio", "Prop.or", "Quasibin.ratio", "ODbin.ratio", "Betabin.ratio"))
  {
  if(as.character(formula[[2]])[1]!="cbind")
   {stop("For methods for proportions please specify formula with structure: cbind(success, failure) ~ treatment")}
@@ -67,7 +68,7 @@ args$conf.level <- conf.level
 args$method <- method
 args$control <- control
 
-if(any(c("Prop.diff", "Prop.or", "Prop.ratio")==method))
+if(any(c("Prop.diff", "Prop.or", "Prop.ratio", "Quasibin.ratio", "ODbin.ratio", "Betabin.ratio")==method))
  {PWCINT<-"pairwiseCIProp"}
  else
  {PWCINT<-"pairwiseCICont"}
