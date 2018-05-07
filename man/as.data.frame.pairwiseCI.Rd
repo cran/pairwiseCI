@@ -36,7 +36,7 @@ and the conf.level and a character string naming the used method.
 data(repellent)
 
 out2<-pairwiseCI(decrease~treatment, data=repellent, control="H",
- alternative="two.sided", method="Param.ratio")
+ alternative="two.sided", method="Param.diff")
 
 out2
 

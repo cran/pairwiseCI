@@ -34,7 +34,7 @@ pairwiseCIProp(formula, data, alternative="two.sided",
 
   \item{method}{ A character string specifying the confidence interval method, one of the following options
     \kbd{"Param.diff"}: Difference of two means, with additional argument \kbd{var.equal=FALSE}(default) as in \kbd{t.test(stats)}
-    \kbd{"Param.ratio"}: Ratio of two means, with additional argument \kbd{var.equal=FALSE}(default) as in \kbd{t.test.ratio(mratios)}
+    \kbd{"Param.ratio"}: Ratio of two means, with additional argument \kbd{var.equal=FALSE}(default) as in \kbd{ttestratio(mratios)}
     \kbd{"Lognorm.diff"}: Difference of two means, assuming a lognormal distribution,
     \kbd{"Lognorm.ratio"}: Ratio of two means, assuming a lognormal distribution,
     \kbd{"HL.diff"}: Exact nonparametric CI for difference of locations based on the Hodges-Lehmann estimator,

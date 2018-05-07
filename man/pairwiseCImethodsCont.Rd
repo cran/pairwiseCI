@@ -57,7 +57,7 @@ Median.ratio(x, y, conf.level=0.95, alternative="two.sided", ...)
 
 
 \item \kbd{Param.ratio} calculates the Fiellers (1954) confidence interval for the ratio
- of two Gaussian samples by calling \kbd{ratio.t.test} in package \pkg{mratios},
+ of two Gaussian samples by calling \kbd{ttestratio} in package \pkg{mratios},
  assuming homogeneous variances if \kbd{var.equal=TRUE}.
  If heterogeneous variances are assumed (setting \kbd{var.equal=FALSE}, the default), the test by Tamhane and Logan (2004) is inverted by solving a quadratic equation according to Fieller,
  where the estimated ratio is simply plugged in order to get Satterthwaite approximated degrees of freedom. See Hasler and Vonk (2006) for some simulation results.
@@ -122,7 +122,7 @@ Statistics in Medicine 25, 4099-4113.
 
 \item \bold{Hothorn, T, Munzel, U}: Exact Nonparametric Confidence Interval for the Ratio of Medians.
  Technical Report, Universitaet Erlangen-Nuernberg, Institut fuer Medizininformatik, Biometrie und Epidemiologie, 2002; available via:
-\url{http://www.statistik.lmu.de/~hothorn/bib/TH_TR_bib.html}.
+\kbd{http://www.statistik.uni-muenchen.de/~hothorn/bib/TH_TR_bib.html}.
 }
 }
 

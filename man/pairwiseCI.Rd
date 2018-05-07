@@ -34,7 +34,7 @@ pairwiseCI(formula, data, by = NULL,
   \item{conf.level}{ The comparisonwise confidence level of the intervals, where 0.95 is default }
   \item{method}{ A character string specifying the confidence interval method, with the following options
     \kbd{"Param.diff"}: Difference of two means, with additional argument \kbd{var.equal=FALSE}(default) as in \kbd{t.test(stats)},
-    \kbd{"Param.ratio"}: Ratio of two means, with additional argument \kbd{var.equal=FALSE}(default) as in \kbd{t.test.ratio(mratios)},
+    \kbd{"Param.ratio"}: Ratio of two means, with additional argument \kbd{var.equal=FALSE}(default) as in \kbd{ttestratio(mratios)},
     \kbd{"Lognorm.diff"}: Difference of two means, assuming a lognormal distribution, based on generalized pivotal quantities,
     \kbd{"Lognorm.ratio"}: Ratio of two means, assuming a lognormal distribution, based on generalized pivotal quantities,
     \kbd{"np.re"}: nonparametric confidence interval for relative effects suitable for the Behrens Fisher problem,
@@ -188,6 +188,7 @@ plot(beeCId)
 
 # as ratio to control:
 
+\dontrun{
 beeCIr<-pairwiseCI(decrease ~ treatment, data=repellent,
  method="Param.ratio", control="H", alternative="less",
  var.equal=FALSE)
@@ -201,7 +202,7 @@ beeCIrBonf<-pairwiseCI(decrease ~ treatment, data=repellent,
  var.equal=FALSE, conf.level=1-0.05/7)
 beeCIrBonf
 plot(beeCIrBonf)
-
+}
 
 ##############################################
 

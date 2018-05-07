@@ -8,9 +8,8 @@ plotCI.pairwiseMEP
 import(MCPAN)
 import(coin)
 
-importFrom(mratios, t.test.ratio, t.test.ratio.default)
+
 importFrom(boot, boot, boot.ci)
-importFrom(binMto, NHS, Add4)
 importFrom(MASS, glm.nb)
 importFrom(mcprofile, mcprofile)
 importFrom("graphics", "axis","abline", "arrows", "box", "lines", "par", "plot", "plot.new", "points", "strwidth")

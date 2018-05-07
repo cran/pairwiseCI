@@ -75,14 +75,13 @@ A list containing:
 
 \examples{
 
-library(mratios)
+df <- data.frame(count = rpois(n=20, lambda=5), treat=rep(LETTERS[1:4], each=5))
 
-data(Mutagenicity)
+QPCI<-pairwiseCI(count ~ treat, data=df,
+ alternative="two.sided", control="A", method="Quasipoisson.ratio")
+ 
+QPCI
 
-QPCI<-pairwiseCI(MN ~ Treatment, data=Mutagenicity,
- alternative="greater", control="Vehicle", method="Quasipoisson.ratio")
-
-plot(QPCI)
 
  }
 
