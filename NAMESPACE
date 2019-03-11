@@ -13,7 +13,7 @@ importFrom(boot, boot, boot.ci)
 importFrom(MASS, glm.nb)
 importFrom(mcprofile, mcprofile)
 importFrom("graphics", "axis","abline", "arrows", "box", "lines", "par", "plot", "plot.new", "points", "strwidth")
-importFrom("stats", "as.formula","approx", "spline", "coef", "coefficients", "confint", "deviance", "family", "glm", "glm.fit", "median", "model.frame", "model.matrix", "model.offset", "model.response", "model.weights", "na.omit", "pnorm", "pt", "qnorm", "qt", "quantile", "rchisq", "rnorm", "uniroot", "var", "binomial", "poisson", "quasibinomial", "quasipoisson")
+importFrom("stats", "as.formula","approx", "spline", "coef", "coefficients", "deviance", "family", "glm", "glm.fit", "median", "model.frame", "model.matrix", "model.offset", "model.response", "model.weights", "na.omit", "pnorm", "pt", "qnorm", "qt", "quantile", "rchisq", "rnorm", "uniroot", "var", "binomial", "poisson", "quasibinomial", "quasipoisson")
 
 
 S3method(plot, pairwiseCI)
